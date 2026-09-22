@@ -1,0 +1,62 @@
+/* =========================================
+   GRANDVISTA HOTEL
+   Reusable Components
+   ========================================= */
+
+
+/* ---------- Form States ---------- */
+
+.form-error {
+    color: #b42318;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.form-success {
+    color: #067647;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+
+/* ---------- Status Badges ---------- */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-available {
+    background: #e8f5ee;
+    color: #067647;
+}
+
+.status-limited {
+    background: #fff4df;
+    color: #9a6700;
+}
+
+.status-sold {
+    background: #fcebea;
+    color: #b42318;
+}
+
+
+/* ---------- Cards ---------- */
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e5e1db;
+}
+
+
+/* ---------- Hidden Utility ---------- */
+
+.hidden {
+    display: none !important;
+}

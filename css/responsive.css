@@ -1,0 +1,188 @@
+/* =========================================
+   GRANDVISTA HOTEL
+   Responsive Styles
+   ========================================= */
+
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 1000px) {
+
+    .main-nav {
+        gap: 15px;
+    }
+
+    .booking-widget {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .booking-submit {
+        width: 100%;
+    }
+
+    .intro-grid {
+        gap: 40px;
+    }
+
+    .room-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .highlight-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 768px) {
+
+    .section {
+        padding: 65px 0;
+    }
+
+
+    /* Header */
+
+    .site-header {
+        background: rgba(13, 43, 54, 0.95);
+    }
+
+    .main-nav {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        right: 0;
+
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+
+        background: var(--primary-dark);
+        padding: 20px;
+    }
+
+    .main-nav.active {
+        display: flex;
+    }
+
+    .main-nav a {
+        padding: 10px 0;
+    }
+
+    .nav-book-button {
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    /* Hero */
+
+    .hero {
+        min-height: 650px;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+
+    /* Booking */
+
+    .booking-widget-section {
+        margin-top: 0;
+        padding: 20px 0;
+        background: var(--background);
+    }
+
+    .booking-widget {
+        grid-template-columns: 1fr;
+        box-shadow: none;
+    }
+
+
+    /* Intro */
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .intro-image {
+        min-height: 350px;
+    }
+
+    .image-placeholder {
+        min-height: 350px;
+    }
+
+    .intro-details {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+
+    /* Rooms */
+
+    .section-heading {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .room-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Highlights */
+
+    .highlight-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* Footer */
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+}
+
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width: 430px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+    }
+
+    .room-footer {
+        align-items: start;
+        flex-direction: column;
+    }
+}
