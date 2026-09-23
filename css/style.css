@@ -135,15 +135,51 @@ img {
 /* ---------- Hero ---------- */
 
 .hero {
-    min-height: 720px;
-    position: relative;
+    min-height: 650px;
     display: flex;
     align-items: center;
-    background:
-        linear-gradient(135deg,
-            #173f4f,
-            #284f5c);
+    position: relative;
+    background-image:
+        linear-gradient(rgba(13, 43, 54, 0.68),
+            rgba(13, 43, 54, 0.68)),
+        url("../images/hotel/hero.jpg");
+    background-size: cover;
+    background-position: center;
     color: var(--white);
+}
+
+.hero-content {
+    max-width: 750px;
+    padding: 100px 0;
+}
+
+.hero-eyebrow {
+    margin-bottom: 18px;
+    color: #e2c59e;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin-bottom: 24px;
+    font-size: 64px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.hero-text {
+    max-width: 620px;
+    margin-bottom: 35px;
+    color: #f1f1f1;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
 .hero-overlay {

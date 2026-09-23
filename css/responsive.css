@@ -86,17 +86,21 @@
 
     /* Hero */
 
-    .hero {
-        min-height: 650px;
-    }
-
-    .hero h1 {
-        font-size: 48px;
-    }
-
-    .hero-description {
-        font-size: 16px;
-    }
+        .hero {
+            min-height: 600px;
+        }
+    
+        .hero h1 {
+            font-size: 42px;
+        }
+    
+        .hero-text {
+            font-size: 16px;
+        }
+    
+        .hero-content {
+            padding: 80px 20px;
+        }
 
 
     /* Booking */
