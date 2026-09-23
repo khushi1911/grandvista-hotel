@@ -62,20 +62,21 @@ img {
 }
 
 
-/* ---------- Header ---------- */
+/* ==============================
+   HEADER / NAVBAR
+   ============================== */
 
 .site-header {
-    position: absolute;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    color: var(--white);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .header-container {
-    min-height: 90px;
+    min-height: 78px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -83,51 +84,84 @@ img {
 }
 
 .logo {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
 }
 
-.logo-main {
-    font-family: Georgia, serif;
-    font-size: 27px;
-    letter-spacing: 1px;
+.logo span {
+    display: block;
+    margin-top: 2px;
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 600;
 }
 
-.logo-sub {
-    font-size: 9px;
-    letter-spacing: 4px;
-    margin-top: 6px;
-    text-align: center;
-}
-
-.main-nav {
+.main-nav ul {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .main-nav a {
+    position: relative;
+    padding: 8px 0;
+    color: var(--text);
+    text-decoration: none;
     font-size: 14px;
-    transition: opacity 0.2s ease;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
 }
 
 .main-nav a:hover {
-    opacity: 0.7;
+    color: var(--accent-dark);
 }
 
-.nav-book-button {
-    padding: 12px 20px;
-    background: var(--accent);
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav .nav-book {
+    padding: 11px 18px;
     color: var(--white);
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+.main-nav .nav-book::after {
+    display: none;
+}
+
+.main-nav .nav-book:hover {
+    color: var(--white);
+    background: var(--primary-dark);
 }
 
 .menu-toggle {
     display: none;
+    padding: 8px;
     border: 0;
     background: transparent;
-    color: var(--white);
-    font-size: 28px;
+    color: var(--primary);
+    font-size: 26px;
     cursor: pointer;
 }
 
