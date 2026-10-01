@@ -1,98 +1,253 @@
 /* =========================================
    GRANDVISTA HOTEL
-   Booking Search
+   Booking Page
    ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const form = document.getElementById("bookingSearchForm");
+    const selectedRoomContainer =
+        document.getElementById("selectedRoomContainer");
 
-    if (!form) {
+    const savedRoom =
+        localStorage.getItem("grandVistaSelectedRoom");
+
+    /*
+       Check whether a room was selected
+    */
+
+    if (!savedRoom) {
+
+        selectedRoomContainer.innerHTML = `
+
+            <div class="booking-empty">
+
+                <h3>No Room Selected</h3>
+
+                <p>
+                    Please select a room before continuing
+                    with your booking.
+                </p>
+
+                <a
+                    href="rooms.html"
+                    class="primary-button">
+                    Browse Rooms
+                </a>
+
+            </div>
+
+        `;
+
         return;
     }
 
-    const checkIn = document.getElementById("checkIn");
-    const checkOut = document.getElementById("checkOut");
-    const adults = document.getElementById("adults");
-    const children = document.getElementById("children");
-    const rooms = document.getElementById("rooms");
-    const roomType = document.getElementById("roomType");
 
-    // Get today's date
-    const today = new Date();
-    const todayString = today.toISOString().split("T")[0];
+    /*
+       Read selected room
+    */
 
-    // Prevent selecting past dates
-    checkIn.min = todayString;
-    checkOut.min = todayString;
+    let room;
 
+    try {
 
-    // Update minimum checkout date
-    checkIn.addEventListener("change", () => {
+        room = JSON.parse(savedRoom);
 
-        checkOut.min = checkIn.value;
+    } catch (error) {
 
-        if (
-            checkOut.value &&
-            checkOut.value <= checkIn.value
-        ) {
-            checkOut.value = "";
-        }
-
-    });
-
-
-    // Handle booking search
-    form.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-
-        // Basic validation
-        if (!checkIn.value || !checkOut.value) {
-
-            alert("Please select both check-in and check-out dates.");
-
-            return;
-        }
-
-
-        if (checkOut.value <= checkIn.value) {
-
-            alert("Check-out must be after check-in.");
-
-            return;
-        }
-
-
-        // Collect booking search data
-        const bookingSearch = {
-
-            checkIn: checkIn.value,
-
-            checkOut: checkOut.value,
-
-            adults: adults.value,
-
-            children: children.value,
-
-            rooms: rooms.value,
-
-            roomType: roomType.value
-
-        };
-
-
-        // Save search information
-        localStorage.setItem(
-            "grandVistaBookingSearch",
-            JSON.stringify(bookingSearch)
+        console.error(
+            "Unable to read selected room.",
+            error
         );
 
+        return;
 
-        // Open Rooms page with search information
-        window.location.href = "pages/rooms.html";
+    }
 
-    });
 
+    /*
+       Display selected room
+    */
+
+    selectedRoomContainer.innerHTML = `
+
+        <div class="selected-room-image">
+
+            <img
+                src="${room.image}"
+                alt="${room.name}">
+
+        </div>
+
+
+        <div class="selected-room-details">
+
+            <p class="room-type">
+                ${formatRoomType(room.type)}
+            </p>
+
+            <h3>
+                ${room.name}
+            </h3>
+
+            <p>
+                ${room.description}
+            </p>
+
+            <div class="selected-room-info">
+
+                <span>
+                    ${room.size}
+                </span>
+
+                <span>
+                    ${room.guests} Guests
+                </span>
+
+                <span>
+                    ${room.bed}
+                </span>
+
+                <span>
+                    ${room.view}
+                </span>
+
+            </div>
+
+            <div class="selected-room-price">
+
+                <strong>
+                    ₹${room.price.toLocaleString("en-IN")}
+                </strong>
+
+                <span>
+                    / night
+                </span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    /*
+       Format room type
+    */
+
+    function formatRoomType(type) {
+
+        if (type === "deluxe") {
+            return "Deluxe";
+        }
+
+        if (type === "premium") {
+            return "Premium";
+        }
+
+        if (type === "suite") {
+            return "Executive Suite";
+        }
+
+        return type;
+
+    }
+    /*
+       Booking form validation
+    */
+
+    const bookingForm =
+        document.getElementById("bookingForm");
+
+    if (bookingForm) {
+
+        bookingForm.addEventListener("submit", (event) => {
+
+            event.preventDefault();
+
+            const guestName =
+                document.getElementById("guestName").value.trim();
+
+            const guestEmail =
+                document.getElementById("guestEmail").value.trim();
+
+            const guestPhone =
+                document.getElementById("guestPhone").value.trim();
+
+            /*
+               Validate name
+            */
+
+            if (guestName.length < 2) {
+
+                alert("Please enter your full name.");
+
+                return;
+
+            }
+
+            /*
+               Validate email
+            */
+
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailPattern.test(guestEmail)) {
+
+                alert("Please enter a valid email address.");
+
+                return;
+
+            }
+
+            /*
+               Validate phone
+            */
+
+            const phonePattern =
+                /^[0-9]{10}$/;
+
+            if (!phonePattern.test(guestPhone)) {
+
+                alert("Please enter a valid 10-digit phone number.");
+
+                return;
+
+            }
+
+            /*
+               Save guest information
+            */
+
+            const guestDetails = {
+
+                name: guestName,
+
+                email: guestEmail,
+
+                phone: guestPhone,
+
+                specialRequest:
+                    document
+                        .getElementById("specialRequest")
+                        .value
+                        .trim()
+
+            };
+
+            localStorage.setItem(
+                "grandVistaGuestDetails",
+                JSON.stringify(guestDetails)
+            );
+
+            /*
+               Continue to confirmation page
+            */
+
+            window.location.href =
+                "confirmation.html";
+
+        });
+
+    }
 });

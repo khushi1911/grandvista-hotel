@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Complete your GrandVista Hotel room booking.">
+
+    <title>Book Your Stay | GrandVista Hotel</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+
+<body>
+
+    <!-- ================================
+         NAVIGATION
+         ================================ -->
+
+    <header class="site-header">
+
+        <nav class="navbar">
+
+            <a href="../index.html" class="logo">
+                GrandVista
+            </a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
+                ☰
+            </button>
+
+            <div class="nav-menu" id="navMenu">
+
+                <a href="../index.html">Home</a>
+
+                <a href="about.html">About</a>
+
+                <a href="rooms.html">Rooms</a>
+
+                <a href="dining.html">Dining</a>
+
+                <a href="amenities.html">Amenities</a>
+
+                <a href="contact.html">Contact</a>
+
+                <a href="booking.html" class="nav-book-button active">
+                    Book Now
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================================
+         PAGE HERO
+         ================================ -->
+
+    <section class="page-hero">
+
+        <div class="page-hero-content">
+
+            <p class="hero-label">
+                GRANDVISTA HOTEL
+            </p>
+
+            <h1>
+                Complete Your Booking
+            </h1>
+
+            <p>
+                Review your selected room and provide
+                your details to continue.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================
+         BOOKING SECTION
+         ================================ -->
+
+    <main>
+
+        <section class="booking-section">
+
+            <div class="container">
+
+                <div class="booking-layout">
+
+
+                    <!-- ================================
+                         SELECTED ROOM
+                         ================================ -->
+
+                    <div class="selected-room-card">
+
+                        <p class="section-label">
+                            YOUR SELECTION
+                        </p>
+
+                        <h2>
+                            Selected Room
+                        </h2>
+
+                        <div id="selectedRoomContainer" class="selected-room-content">
+
+                            <!--
+                                Selected room information
+                                will be inserted by JavaScript
+                            -->
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ================================
+                         BOOKING FORM
+                         ================================ -->
+
+                    <div class="booking-form-card">
+
+                        <p class="section-label">
+                            GUEST DETAILS
+                        </p>
+
+                        <h2>
+                            Your Information
+                        </h2>
+
+                        <form id="bookingForm" novalidate>
+
+
+                            <!-- Full Name -->
+
+                            <div class="form-group">
+
+                                <label for="guestName">
+                                    Full Name
+                                </label>
+
+                                <input type="text" id="guestName" name="guestName" placeholder="Enter your full name"
+                                    required>
+
+                            </div>
+
+
+                            <!-- Email -->
+
+                            <div class="form-group">
+
+                                <label for="guestEmail">
+                                    Email Address
+                                </label>
+
+                                <input type="email" id="guestEmail" name="guestEmail"
+                                    placeholder="Enter your email address" required>
+
+                            </div>
+
+
+                            <!-- Phone -->
+
+                            <div class="form-group">
+
+                                <label for="guestPhone">
+                                    Phone Number
+                                </label>
+
+                                <input type="tel" id="guestPhone" name="guestPhone"
+                                    placeholder="Enter your phone number" required>
+
+                            </div>
+
+
+                            <!-- Special Request -->
+
+                            <div class="form-group">
+
+                                <label for="specialRequest">
+                                    Special Request
+                                    <span>(Optional)</span>
+                                </label>
+
+                                <textarea id="specialRequest" name="specialRequest" rows="4"
+                                    placeholder="Any special requests?"></textarea>
+
+                            </div>
+
+
+                            <!-- Submit -->
+
+                            <button type="submit" class="primary-button booking-submit-button">
+
+                                Continue Booking
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================
+         FOOTER
+         ================================ -->
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-brand">
+
+                    <h3>
+                        GrandVista Hotel
+                    </h3>
+
+                    <p>
+                        A comfortable stay, thoughtfully designed.
+                    </p>
+
+                </div>
+
+                <div class="footer-links">
+
+                    <a href="../index.html">
+                        Home
+                    </a>
+
+                    <a href="rooms.html">
+                        Rooms
+                    </a>
+
+                    <a href="contact.html">
+                        Contact
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 GrandVista Hotel. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Booking JavaScript -->
+
+    <script src="../js/booking.js"></script>
+
+</body>
+
+</html>
