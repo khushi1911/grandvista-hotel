@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             guests: 2,
             bed: "King Bed",
             view: "City View",
-            image: "../images/hotel/deluxe-room.jpg",
+            image: "../images/rooms/deluxe-room.jpg",
             description:
                 "A comfortable room with modern amenities and a relaxing city view."
         },
@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             guests: 3,
             bed: "King Bed",
             view: "Garden View",
-            image: "../images/hotel/premium-room.jpg",
+            image: "../images/rooms/premium-room.jpg",
             description:
                 "A spacious room designed for guests looking for extra comfort and space."
         },
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             guests: 4,
             bed: "King Bed",
             view: "Panoramic View",
-            image: "../images/hotel/executive-suite.jpg",
+            image: "../images/rooms/executive-suite.jpg",
             description:
                 "A spacious suite with separate living space and premium amenities."
         }

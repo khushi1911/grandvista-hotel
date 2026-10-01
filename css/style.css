@@ -635,3 +635,347 @@ img {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 20px 0;
 }
+
+/* =========================================
+   ROOMS PAGE
+   ========================================= */
+
+.page-hero {
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    background: #f4f1ec;
+}
+
+.page-hero-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.page-hero .hero-label {
+    margin-bottom: 12px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.page-hero h1 {
+    margin: 0 0 18px;
+    font-size: 48px;
+}
+
+.page-hero p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   SEARCH SUMMARY
+   ========================================= */
+
+.rooms-search-section {
+    padding: 30px 20px;
+    background: #ffffff;
+}
+
+.search-summary {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 22px 25px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.search-summary div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.search-summary span {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.65;
+}
+
+.search-summary strong {
+    font-size: 15px;
+}
+
+
+/* =========================================
+   ROOMS SECTION
+   ========================================= */
+
+.rooms-section {
+    padding: 70px 20px 90px;
+    background: #faf9f7;
+}
+
+.rooms-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 45px;
+    text-align: center;
+}
+
+.section-heading .section-label {
+    margin-bottom: 10px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.section-heading h2 {
+    margin: 0 0 15px;
+    font-size: 38px;
+}
+
+.section-heading p {
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   ROOM GRID
+   ========================================= */
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+
+/* =========================================
+   ROOM CARD
+   ========================================= */
+
+.room-card {
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e6e2dc;
+    border-radius: 8px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+    transition: transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================
+   ROOM IMAGE
+   ========================================= */
+
+.room-image {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    background: #e9e5df;
+}
+
+.room-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.room-card:hover .room-image img {
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   ROOM CONTENT
+   ========================================= */
+
+.room-card-content {
+    padding: 25px;
+}
+
+.room-type {
+    margin: 0 0 8px;
+
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    font-weight: 600;
+}
+
+.room-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 24px;
+}
+
+.room-description {
+    margin: 0 0 20px;
+
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+
+/* =========================================
+   ROOM DETAILS
+   ========================================= */
+
+.room-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    padding: 18px 0;
+
+    border-top: 1px solid #e8e4df;
+    border-bottom: 1px solid #e8e4df;
+}
+
+.room-details span {
+    font-size: 13px;
+}
+
+
+/* =========================================
+   ROOM FOOTER
+   ========================================= */
+
+.room-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding-top: 20px;
+}
+
+.room-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.room-price strong {
+    font-size: 20px;
+}
+
+.room-price span {
+    margin-top: 3px;
+    font-size: 12px;
+    opacity: 0.65;
+}
+
+
+/* =========================================
+   NO ROOMS MESSAGE
+   ========================================= */
+
+.no-rooms {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 45px 25px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+}
+
+.no-rooms h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.no-rooms p {
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .search-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .rooms-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .page-hero {
+        min-height: 260px;
+        padding: 60px 20px;
+    }
+
+    .page-hero h1 {
+        font-size: 36px;
+    }
+
+    .search-summary {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .rooms-section {
+        padding: 50px 15px 70px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .room-card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .room-card-footer .primary-button {
+        width: 100%;
+    }
+
+}
+
+.room-card:nth-child(2) .room-image img {
+    object-fit: cover;
+    object-position: center center;
+}
