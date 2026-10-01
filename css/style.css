@@ -1152,3 +1152,169 @@ img {
     }
 
 }
+
+/* =========================================
+   BOOKING CONFIRMATION
+   ========================================= */
+
+.confirmation-section {
+    padding: 80px 0;
+    background: #f7f8fa;
+    min-height: 60vh;
+}
+
+.confirmation-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 45px;
+    background: #ffffff;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.confirmation-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #eef7f0;
+    color: #2f7d46;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.confirmation-card h1 {
+    margin: 8px 0 15px;
+    font-size: 36px;
+}
+
+.confirmation-message {
+    max-width: 600px;
+    margin: 0 auto 35px;
+    color: #666;
+    line-height: 1.7;
+}
+
+.confirmation-details {
+    text-align: left;
+    margin-top: 30px;
+}
+
+.confirmation-room {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 25px;
+    padding: 20px;
+    background: #f7f8fa;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.confirmation-room img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.confirmation-room h3 {
+    margin: 6px 0 10px;
+    font-size: 24px;
+}
+
+.confirmation-room p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.confirmation-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.confirmation-info div {
+    padding: 15px;
+    background: #f7f8fa;
+    border-radius: 8px;
+}
+
+.confirmation-info span {
+    display: block;
+    margin-bottom: 6px;
+    color: #777;
+    font-size: 13px;
+}
+
+.confirmation-info strong {
+    display: block;
+    font-size: 15px;
+    word-break: break-word;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.secondary-button {
+    display: inline-block;
+    padding: 12px 22px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    background: #ffffff;
+    transition: 0.2s ease;
+}
+
+.secondary-button:hover {
+    background: #f3f3f3;
+}
+
+
+/* Confirmation responsive */
+
+@media (max-width: 600px) {
+
+    .confirmation-section {
+        padding: 50px 0;
+    }
+
+    .confirmation-card {
+        padding: 30px 20px;
+    }
+
+    .confirmation-card h1 {
+        font-size: 28px;
+    }
+
+    .confirmation-room {
+        grid-template-columns: 1fr;
+    }
+
+    .confirmation-room img {
+        height: 200px;
+    }
+
+    .confirmation-info {
+        grid-template-columns: 1fr;
+    }
+
+    .confirmation-actions {
+        flex-direction: column;
+    }
+
+    .confirmation-actions a {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+}
