@@ -5,11 +5,14 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const roomsContainer = document.getElementById("roomsContainer");
+    const roomsContainer =
+        document.getElementById("roomsContainer");
 
-    const noRoomsMessage = document.getElementById("noRoomsMessage");
+    const noRoomsMessage =
+        document.getElementById("noRoomsMessage");
 
-    const showAllRoomsButton = document.getElementById("showAllRooms");
+    const showAllRoomsButton =
+        document.getElementById("showAllRooms");
 
 
     /*
@@ -69,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const savedSearch =
         localStorage.getItem("grandVistaBookingSearch");
-
 
     let bookingSearch = null;
 
@@ -177,7 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return "-";
         }
 
-        const date = new Date(dateString + "T00:00:00");
+        const date =
+            new Date(dateString + "T00:00:00");
 
         return date.toLocaleDateString(
             "en-IN",
@@ -311,14 +314,25 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
 
 
-                        <button
-                            type="button"
-                            class="primary-button select-room-button"
-                            data-room-id="${room.id}">
+                        <div class="room-card-actions">
 
-                            Select Room
+                            <button
+                                type="button"
+                                class="secondary-button view-room-button"
+                                data-room-id="${room.id}"
+                            >
+                                View Details
+                            </button>
 
-                        </button>
+                            <button
+                                type="button"
+                                class="primary-button select-room-button"
+                                data-room-id="${room.id}"
+                            >
+                                Book Now
+                            </button>
+
+                        </div>
 
                     </div>
 
@@ -333,7 +347,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         /*
-           Select room buttons
+           View Details buttons
+        */
+
+        const viewButtons =
+            document.querySelectorAll(
+                ".view-room-button"
+            );
+
+
+        viewButtons.forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    const roomId =
+                        Number(button.dataset.roomId);
+
+                    const selectedRoom =
+                        rooms.find(
+                            room => room.id === roomId
+                        );
+
+
+                    if (!selectedRoom) {
+                        return;
+                    }
+
+
+                    localStorage.setItem(
+                        "grandVistaSelectedRoom",
+                        JSON.stringify(selectedRoom)
+                    );
+
+
+                    window.location.href =
+                    `room-details.html?room=${roomId}`;
+                }
+            );
+
+        });
+
+
+        /*
+           Book Now buttons
         */
 
         const selectButtons =
