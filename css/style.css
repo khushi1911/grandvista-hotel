@@ -2634,3 +2634,77 @@ img {
           font-size: 14px;
       }
   }
+
+  /* ========================================
+   PRIVACY POLICY PAGE
+======================================== */
+
+  .privacy-section {
+      padding: 80px 0;
+      background: #f7f8fa;
+  }
+
+  .privacy-card {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 45px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  }
+
+  .privacy-updated {
+      margin: 0 0 35px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e5e5e5;
+      color: #777777;
+      font-size: 14px;
+  }
+
+  .privacy-block {
+      margin-bottom: 32px;
+  }
+
+  .privacy-block:last-child {
+      margin-bottom: 0;
+  }
+
+  .privacy-block h2 {
+      margin: 0 0 12px;
+      font-size: 23px;
+  }
+
+  .privacy-block p {
+      margin: 0;
+      color: #666666;
+      line-height: 1.8;
+  }
+
+  .privacy-block .primary-button {
+      display: inline-block;
+      margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+
+      .privacy-section {
+          padding: 50px 0;
+      }
+
+      .privacy-card {
+          padding: 28px 20px;
+      }
+
+      .privacy-block {
+          margin-bottom: 26px;
+      }
+
+      .privacy-block h2 {
+          font-size: 20px;
+      }
+
+      .privacy-block p {
+          font-size: 14px;
+          line-height: 1.7;
+      }
+  }
