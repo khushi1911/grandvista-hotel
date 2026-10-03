@@ -2478,3 +2478,82 @@ img {
       }
 
   }
+
+  /* ========================================
+   FAQ PAGE
+======================================== */
+
+  .faq-section {
+      padding: 80px 0;
+      background: #f7f8fa;
+  }
+
+  .faq-list {
+      max-width: 850px;
+      margin: 0 auto;
+  }
+
+  .faq-item {
+      margin-bottom: 12px;
+      background: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+  }
+
+  .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 22px;
+      border: none;
+      background: #ffffff;
+      color: #333333;
+      text-align: left;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+  }
+
+  .faq-icon {
+      flex-shrink: 0;
+      font-size: 24px;
+      font-weight: 400;
+      transition: transform 0.2s ease;
+  }
+
+  .faq-answer {
+      display: none;
+      padding: 0 22px 20px;
+  }
+
+  .faq-answer p {
+      margin: 0;
+      color: #666666;
+      line-height: 1.7;
+  }
+
+  .faq-item.active .faq-answer {
+      display: block;
+  }
+
+  .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+  }
+
+  @media (max-width: 600px) {
+      .faq-section {
+          padding: 50px 0;
+      }
+
+      .faq-question {
+          padding: 17px 18px;
+          font-size: 15px;
+      }
+
+      .faq-answer {
+          padding: 0 18px 18px;
+      }
+  }
