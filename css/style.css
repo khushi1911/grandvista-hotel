@@ -3244,3 +3244,140 @@ img {
           font-size: 14px;
       }
   }
+
+  /* ========================================
+   LOCATION PAGE
+======================================== */
+
+  .location-section {
+      padding: 80px 0;
+      background: #f7f8fa;
+  }
+
+  .location-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 950px;
+      margin: 0 auto;
+  }
+
+  .location-card {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 20px;
+      align-items: start;
+      padding: 28px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .location-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
+  }
+
+  .location-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      color: #444444;
+      font-size: 13px;
+      font-weight: 600;
+  }
+
+  .location-content .section-label {
+      margin: 2px 0 7px;
+      font-size: 11px;
+  }
+
+  .location-content h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      line-height: 1.4;
+  }
+
+  .location-content p:not(.section-label) {
+      margin: 0;
+      color: #666666;
+      line-height: 1.7;
+      font-size: 14px;
+  }
+
+  .location-action {
+      max-width: 700px;
+      margin: 55px auto 0;
+      padding: 35px;
+      background: #ffffff;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .location-action h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+  }
+
+  .location-action p {
+      margin: 0 0 20px;
+      color: #666666;
+      line-height: 1.7;
+  }
+
+  .location-action .primary-button {
+      display: inline-block;
+  }
+
+  @media (max-width: 800px) {
+
+      .location-section {
+          padding: 60px 0;
+      }
+
+      .location-grid {
+          grid-template-columns: 1fr;
+      }
+  }
+
+  @media (max-width: 600px) {
+
+      .location-section {
+          padding: 50px 0;
+      }
+
+      .location-card {
+          grid-template-columns: 50px 1fr;
+          gap: 15px;
+          padding: 22px 20px;
+      }
+
+      .location-icon {
+          width: 45px;
+          height: 45px;
+          font-size: 12px;
+      }
+
+      .location-content h3 {
+          font-size: 19px;
+      }
+
+      .location-content p:not(.section-label) {
+          font-size: 14px;
+      }
+
+      .location-action {
+          margin-top: 40px;
+          padding: 25px 20px;
+      }
+
+      .location-action h3 {
+          font-size: 21px;
+      }
+  }
