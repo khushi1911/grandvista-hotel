@@ -2557,3 +2557,80 @@ img {
           padding: 0 18px 18px;
       }
   }
+
+  /* ========================================
+   POLICIES PAGE
+======================================== */
+
+  .policies-section {
+      padding: 80px 0;
+      background: #f7f8fa;
+  }
+
+  .policies-list {
+      max-width: 900px;
+      margin: 0 auto;
+  }
+
+  .policy-card {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 25px;
+      align-items: start;
+      margin-bottom: 18px;
+      padding: 28px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .policy-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: #f0f0f0;
+      color: #444444;
+      font-size: 15px;
+      font-weight: 600;
+  }
+
+  .policy-content h3 {
+      margin: 4px 0 10px;
+      font-size: 22px;
+  }
+
+  .policy-content p {
+      margin: 0;
+      color: #666666;
+      line-height: 1.7;
+  }
+
+  @media (max-width: 600px) {
+
+      .policies-section {
+          padding: 50px 0;
+      }
+
+      .policy-card {
+          grid-template-columns: 1fr;
+          gap: 15px;
+          padding: 22px 20px;
+      }
+
+      .policy-number {
+          width: 48px;
+          height: 48px;
+          font-size: 14px;
+      }
+
+      .policy-content h3 {
+          font-size: 20px;
+      }
+
+      .policy-content p {
+          font-size: 14px;
+      }
+  }
