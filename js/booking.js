@@ -20,21 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const checkOut =
             document.getElementById("checkOut");
 
-        /*
-           Set today's date as the minimum
-           check-in date
-        */
-
         const today =
             new Date().toISOString().split("T")[0];
 
         if (checkIn) {
             checkIn.min = today;
         }
-
-        /*
-           Checkout cannot be before check-in
-        */
 
         if (checkIn && checkOut) {
 
@@ -44,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (
                     checkOut.value &&
-                    checkOut.value < checkIn.value
+                    checkOut.value <= checkIn.value
                 ) {
                     checkOut.value = "";
                 }
@@ -52,11 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
         }
-
-
-        /*
-           Handle Check Availability
-        */
 
         bookingSearchForm.addEventListener("submit", (event) => {
 
@@ -81,10 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById("roomType").value;
 
 
-            /*
-               Validate dates
-            */
-
             if (!checkInValue || !checkOutValue) {
 
                 alert(
@@ -104,10 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-
-            /*
-               Save booking search
-            */
 
             const bookingSearch = {
 
@@ -132,10 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-            /*
-               Go to rooms page
-            */
-
             window.location.href =
                 "pages/rooms.html";
 
@@ -145,162 +119,767 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================
-       BOOKING PAGE - SELECTED ROOM
+       BOOKING PAGE
        ========================================= */
 
     const selectedRoomContainer =
         document.getElementById("selectedRoomContainer");
 
-    if (selectedRoomContainer) {
+    const bookingForm =
+        document.getElementById("bookingForm");
 
-        const savedRoom =
-            localStorage.getItem("grandVistaSelectedRoom");
 
+    if (!selectedRoomContainer || !bookingForm) {
+        return;
+    }
+
+
+    /* =========================================
+       LOAD SELECTED ROOM
+       ========================================= */
+
+    const savedRoom =
+        localStorage.getItem("grandVistaSelectedRoom");
+
+    if (!savedRoom) {
+
+        selectedRoomContainer.innerHTML = `
+
+            <div class="booking-empty">
+
+                <h3>
+                    No Room Selected
+                </h3>
+
+                <p>
+                    Please select a room before continuing
+                    with your booking.
+                </p>
+
+                <a
+                    href="rooms.html"
+                    class="primary-button">
+                    Browse Rooms
+                </a>
+
+            </div>
+
+        `;
+
+        bookingForm.style.display = "none";
+
+        return;
+    }
+
+
+    let room;
+
+    try {
+
+        room =
+            JSON.parse(savedRoom);
+
+    } catch (error) {
+
+        console.error(
+            "Unable to read selected room.",
+            error
+        );
+
+        selectedRoomContainer.innerHTML = `
+
+            <div class="booking-empty">
+
+                <h3>
+                    Unable to Load Room
+                </h3>
+
+                <p>
+                    Please return to the rooms page
+                    and select a room again.
+                </p>
+
+                <a
+                    href="rooms.html"
+                    class="primary-button">
+                    Browse Rooms
+                </a>
+
+            </div>
+
+        `;
+
+        bookingForm.style.display = "none";
+
+        return;
+    }
+
+
+    /* =========================================
+       DISPLAY SELECTED ROOM
+       ========================================= */
+
+    selectedRoomContainer.innerHTML = `
+
+        <div class="selected-room-image">
+
+            <img
+                src="${room.image}"
+                alt="${room.name}">
+
+        </div>
+
+        <div class="selected-room-details">
+
+            <p class="room-type">
+                ${formatRoomType(room.type)}
+            </p>
+
+            <h3>
+                ${room.name}
+            </h3>
+
+            <p>
+                ${room.description}
+            </p>
+
+            <div class="selected-room-info">
+
+                <span>
+                    ${room.size}
+                </span>
+
+                <span>
+                    ${room.guests} Guests
+                </span>
+
+                <span>
+                    ${room.bed}
+                </span>
+
+                <span>
+                    ${room.view}
+                </span>
+
+            </div>
+
+            <div class="selected-room-price">
+
+                <strong>
+                    ₹${room.price.toLocaleString("en-IN")}
+                </strong>
+
+                <span>
+                    / night
+                </span>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    /* =========================================
+       LOAD SEARCH DATA
+       ========================================= */
+
+    const savedSearch =
+        localStorage.getItem("grandVistaBookingSearch");
+
+    let search = null;
+
+    if (savedSearch) {
+
+        try {
+
+            search =
+                JSON.parse(savedSearch);
+
+        } catch (error) {
+
+            console.error(
+                "Unable to read booking search.",
+                error
+            );
+
+        }
+
+    }
+
+
+    const bookingCheckIn =
+        document.getElementById("bookingCheckIn");
+
+    const bookingCheckOut =
+        document.getElementById("bookingCheckOut");
+
+    const bookingAdults =
+        document.getElementById("bookingAdults");
+
+    const bookingChildren =
+        document.getElementById("bookingChildren");
+
+
+    const today =
+        new Date().toISOString().split("T")[0];
+
+
+    if (bookingCheckIn) {
+        bookingCheckIn.min = today;
+    }
+
+
+    if (search) {
+
+        if (bookingCheckIn) {
+            bookingCheckIn.value =
+                search.checkIn || "";
+        }
+
+        if (bookingCheckOut) {
+            bookingCheckOut.value =
+                search.checkOut || "";
+        }
+
+        if (bookingAdults) {
+            bookingAdults.value =
+                search.adults || 1;
+        }
+
+        if (bookingChildren) {
+            bookingChildren.value =
+                search.children || 0;
+        }
+
+    }
+
+
+    if (
+        bookingCheckIn &&
+        bookingCheckOut
+    ) {
+
+        bookingCheckOut.min =
+            bookingCheckIn.value || today;
+
+
+        bookingCheckIn.addEventListener(
+            "change",
+            () => {
+
+                bookingCheckOut.min =
+                    bookingCheckIn.value;
+
+                if (
+                    bookingCheckOut.value &&
+                    bookingCheckOut.value <=
+                    bookingCheckIn.value
+                ) {
+
+                    bookingCheckOut.value = "";
+
+                }
+
+                updatePrice();
+
+            }
+        );
+
+
+        bookingCheckOut.addEventListener(
+            "change",
+            updatePrice
+        );
+
+    }
+
+
+    /* =========================================
+       PRICE ELEMENTS
+       ========================================= */
+
+    const summaryRoom =
+        document.getElementById("summaryRoom");
+
+    const summaryNights =
+        document.getElementById("summaryNights");
+
+    const summaryRoomPrice =
+        document.getElementById("summaryRoomPrice");
+
+    const summaryServices =
+        document.getElementById("summaryServices");
+
+    const summaryTax =
+        document.getElementById("summaryTax");
+
+    const summaryTotal =
+        document.getElementById("summaryTotal");
+
+
+    /* =========================================
+       CALCULATE NIGHTS
+       ========================================= */
+
+    function calculateNights() {
+
+        if (
+            !bookingCheckIn ||
+            !bookingCheckOut ||
+            !bookingCheckIn.value ||
+            !bookingCheckOut.value
+        ) {
+            return 0;
+        }
+
+
+        const checkInDate =
+            new Date(
+                bookingCheckIn.value
+            );
+
+        const checkOutDate =
+            new Date(
+                bookingCheckOut.value
+            );
+
+
+        const difference =
+            checkOutDate - checkInDate;
+
+
+        const nights =
+            Math.ceil(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        return nights > 0 ? nights : 0;
+
+    }
+
+
+    /* =========================================
+       ADDITIONAL SERVICES
+       ========================================= */
+
+    const serviceOptions =
+        document.querySelectorAll(
+            ".service-option"
+        );
+
+
+    function calculateServices() {
+
+        let total = 0;
+
+        serviceOptions.forEach(
+            (service) => {
+
+                if (service.checked) {
+
+                    total +=
+                        Number(service.value);
+
+                }
+
+            }
+        );
+
+        return total;
+
+    }
+
+
+    serviceOptions.forEach(
+        (service) => {
+
+            service.addEventListener(
+                "change",
+                updatePrice
+            );
+
+        }
+    );
+
+
+    /* =========================================
+       UPDATE PRICE
+       ========================================= */
+
+    function updatePrice() {
+
+        const nights =
+            calculateNights();
+
+        const roomTotal =
+            room.price * nights;
+
+        const serviceTotal =
+            calculateServices();
 
         /*
-           Check whether a room was selected
+           Demo hotel tax:
+           12% of room + services
         */
 
-        if (!savedRoom) {
+        const taxableAmount =
+            roomTotal + serviceTotal;
 
-            selectedRoomContainer.innerHTML = `
+        const tax =
+            Math.round(
+                taxableAmount * 0.12
+            );
 
-                <div class="booking-empty">
+        const total =
+            roomTotal +
+            serviceTotal +
+            tax;
 
-                    <h3>No Room Selected</h3>
 
-                    <p>
-                        Please select a room before continuing
-                        with your booking.
-                    </p>
+        if (summaryRoom) {
 
-                    <a
-                        href="rooms.html"
-                        class="primary-button">
+            summaryRoom.textContent =
+                room.name;
 
-                        Browse Rooms
+        }
 
-                    </a>
 
-                </div>
+        if (summaryNights) {
 
-            `;
+            summaryNights.textContent =
+                nights;
 
-        } else {
+        }
 
-            /*
-               Read selected room
-            */
 
-            let room;
+        if (summaryRoomPrice) {
 
-            try {
+            summaryRoomPrice.textContent =
+                `₹${roomTotal.toLocaleString("en-IN")}`;
 
-                room = JSON.parse(savedRoom);
+        }
 
-            } catch (error) {
 
-                console.error(
-                    "Unable to read selected room.",
-                    error
+        if (summaryServices) {
+
+            summaryServices.textContent =
+                `₹${serviceTotal.toLocaleString("en-IN")}`;
+
+        }
+
+
+        if (summaryTax) {
+
+            summaryTax.textContent =
+                `₹${tax.toLocaleString("en-IN")}`;
+
+        }
+
+
+        if (summaryTotal) {
+
+            summaryTotal.textContent =
+                `₹${total.toLocaleString("en-IN")}`;
+
+        }
+
+    }
+
+
+    updatePrice();
+
+
+    /* =========================================
+       BOOKING FORM SUBMISSION
+       ========================================= */
+
+    bookingForm.addEventListener(
+        "submit",
+        (event) => {
+
+            event.preventDefault();
+
+
+            const checkIn =
+                bookingCheckIn.value;
+
+            const checkOut =
+                bookingCheckOut.value;
+
+            const guestName =
+                document
+                    .getElementById("guestName")
+                    .value
+                    .trim();
+
+            const guestEmail =
+                document
+                    .getElementById("guestEmail")
+                    .value
+                    .trim();
+
+            const guestPhone =
+                document
+                    .getElementById("guestPhone")
+                    .value
+                    .trim();
+
+            const guestCountry =
+                document
+                    .getElementById("guestCountry")
+                    .value
+                    .trim();
+
+            const adults =
+                Number(
+                    bookingAdults.value
                 );
 
-                selectedRoomContainer.innerHTML = `
+            const children =
+                Number(
+                    bookingChildren.value
+                );
 
-                    <div class="booking-empty">
+            const specialRequest =
+                document
+                    .getElementById("specialRequest")
+                    .value
+                    .trim();
 
-                        <h3>Unable to Load Room</h3>
 
-                        <p>
-                            Please return to the rooms page
-                            and select a room again.
-                        </p>
+            /* Dates */
 
-                        <a
-                            href="rooms.html"
-                            class="primary-button">
+            if (!checkIn || !checkOut) {
 
-                            Browse Rooms
-
-                        </a>
-
-                    </div>
-
-                `;
+                alert(
+                    "Please select your check-in and check-out dates."
+                );
 
                 return;
             }
 
 
-            /*
-               Display selected room
-            */
+            if (checkOut <= checkIn) {
 
-            selectedRoomContainer.innerHTML = `
+                alert(
+                    "Check-out date must be after check-in date."
+                );
 
-                <div class="selected-room-image">
-
-                    <img
-                        src="${room.image}"
-                        alt="${room.name}">
-
-                </div>
+                return;
+            }
 
 
-                <div class="selected-room-details">
+            /* Name */
 
-                    <p class="room-type">
-                        ${formatRoomType(room.type)}
-                    </p>
+            if (guestName.length < 2) {
 
-                    <h3>
-                        ${room.name}
-                    </h3>
+                alert(
+                    "Please enter your full name."
+                );
 
-                    <p>
-                        ${room.description}
-                    </p>
-
-                    <div class="selected-room-info">
-
-                        <span>
-                            ${room.size}
-                        </span>
-
-                        <span>
-                            ${room.guests} Guests
-                        </span>
-
-                        <span>
-                            ${room.bed}
-                        </span>
-
-                        <span>
-                            ${room.view}
-                        </span>
-
-                    </div>
+                return;
+            }
 
 
-                    <div class="selected-room-price">
+            /* Email */
 
-                        <strong>
-                            ₹${room.price.toLocaleString("en-IN")}
-                        </strong>
+            const emailPattern =
+                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                        <span>
-                            / night
-                        </span>
 
-                    </div>
+            if (
+                !emailPattern.test(
+                    guestEmail
+                )
+            ) {
 
-                </div>
+                alert(
+                    "Please enter a valid email address."
+                );
 
-            `;
+                return;
+            }
+
+
+            /* Phone */
+
+            const phonePattern =
+                /^[0-9]{10}$/;
+
+
+            if (
+                !phonePattern.test(
+                    guestPhone
+                )
+            ) {
+
+                alert(
+                    "Please enter a valid 10-digit phone number."
+                );
+
+                return;
+            }
+
+
+            /* Country */
+
+            if (guestCountry.length < 2) {
+
+                alert(
+                    "Please enter your country."
+                );
+
+                return;
+            }
+
+
+            /* Guests */
+
+            if (
+                adults < 1 ||
+                children < 0
+            ) {
+
+                alert(
+                    "Please enter valid guest numbers."
+                );
+
+                return;
+            }
+
+
+            /* Room capacity */
+
+            if (
+                adults + children >
+                Number(room.guests)
+            ) {
+
+                alert(
+                    `This room can accommodate up to ${room.guests} guests.`
+                );
+
+                return;
+            }
+
+
+            const nights =
+                calculateNights();
+
+            const serviceTotal =
+                calculateServices();
+
+            const roomTotal =
+                room.price * nights;
+
+            const tax =
+                Math.round(
+                    (roomTotal + serviceTotal) *
+                    0.12
+                );
+
+            const total =
+                roomTotal +
+                serviceTotal +
+                tax;
+
+
+            /* Selected services */
+
+            const selectedServices = [];
+
+            serviceOptions.forEach(
+                (service) => {
+
+                    if (service.checked) {
+
+                        selectedServices.push({
+
+                            name:
+                                service.dataset.name,
+
+                            price:
+                                Number(service.value)
+
+                        });
+
+                    }
+
+                }
+            );
+
+
+            /* Guest details */
+
+            const guestDetails = {
+
+                name: guestName,
+
+                email: guestEmail,
+
+                phone: guestPhone,
+
+                country: guestCountry,
+
+                adults: adults,
+
+                children: children,
+
+                specialRequest:
+                    specialRequest
+
+            };
+
+
+            /* Booking details */
+
+            const bookingDetails = {
+
+                checkIn: checkIn,
+
+                checkOut: checkOut,
+
+                nights: nights,
+
+                roomPrice: room.price,
+
+                roomTotal: roomTotal,
+
+                services: selectedServices,
+
+                servicesTotal: serviceTotal,
+
+                tax: tax,
+
+                total: total
+
+            };
+
+
+            localStorage.setItem(
+                "grandVistaGuestDetails",
+                JSON.stringify(
+                    guestDetails
+                )
+            );
+
+
+            localStorage.setItem(
+                "grandVistaBookingDetails",
+                JSON.stringify(
+                    bookingDetails
+                )
+            );
+
+
+            window.location.href =
+                "confirmation.html";
 
         }
-
-    }
+    );
 
 
     /* =========================================
@@ -322,141 +901,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         return type;
-
-    }
-
-
-    /* =========================================
-       BOOKING PAGE - GUEST FORM
-       ========================================= */
-
-    const bookingForm =
-        document.getElementById("bookingForm");
-
-    if (bookingForm) {
-
-        bookingForm.addEventListener("submit", (event) => {
-
-            event.preventDefault();
-
-
-            const guestName =
-                document
-                    .getElementById("guestName")
-                    .value
-                    .trim();
-
-
-            const guestEmail =
-                document
-                    .getElementById("guestEmail")
-                    .value
-                    .trim();
-
-
-            const guestPhone =
-                document
-                    .getElementById("guestPhone")
-                    .value
-                    .trim();
-
-
-            /*
-               Validate name
-            */
-
-            if (guestName.length < 2) {
-
-                alert(
-                    "Please enter your full name."
-                );
-
-                return;
-
-            }
-
-
-            /*
-               Validate email
-            */
-
-            const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(guestEmail)) {
-
-                alert(
-                    "Please enter a valid email address."
-                );
-
-                return;
-
-            }
-
-
-            /*
-               Validate phone
-            */
-
-            const phonePattern =
-                /^[0-9]{10}$/;
-
-            if (!phonePattern.test(guestPhone)) {
-
-                alert(
-                    "Please enter a valid 10-digit phone number."
-                );
-
-                return;
-
-            }
-
-
-            /*
-               Special request
-            */
-
-            const specialRequestElement =
-                document.getElementById("specialRequest");
-
-
-            const specialRequest =
-                specialRequestElement
-                    ? specialRequestElement.value.trim()
-                    : "";
-
-
-            /*
-               Save guest information
-            */
-
-            const guestDetails = {
-
-                name: guestName,
-
-                email: guestEmail,
-
-                phone: guestPhone,
-
-                specialRequest: specialRequest
-
-            };
-
-
-            localStorage.setItem(
-                "grandVistaGuestDetails",
-                JSON.stringify(guestDetails)
-            );
-
-
-            /*
-               Continue to confirmation
-            */
-
-            window.location.href =
-                "confirmation.html";
-
-        });
 
     }
 

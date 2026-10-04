@@ -8,29 +8,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmationDetails =
         document.getElementById("confirmationDetails");
 
+    if (!confirmationDetails) {
+        return;
+    }
+
+
+    /* =========================================
+       LOAD SAVED DATA
+       ========================================= */
+
     const savedRoom =
         localStorage.getItem("grandVistaSelectedRoom");
 
     const savedGuest =
         localStorage.getItem("grandVistaGuestDetails");
 
-    /*
-       Check saved booking information
-    */
+    const savedBooking =
+        localStorage.getItem("grandVistaBookingDetails");
 
-    if (!savedRoom || !savedGuest) {
+
+    if (!savedRoom || !savedGuest || !savedBooking) {
 
         confirmationDetails.innerHTML = `
 
             <div class="booking-empty">
 
                 <h3>
-                    Booking Information Not Found
+                    Booking Details Not Found
                 </h3>
 
                 <p>
-                    Please complete the booking process
-                    before viewing the confirmation.
+                    Please return to the rooms page and
+                    start your booking again.
                 </p>
 
                 <a
@@ -44,69 +53,131 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         return;
-
     }
 
 
-    /*
-       Read saved information
-    */
-
     let room;
     let guest;
+    let booking;
+
 
     try {
 
-        room = JSON.parse(savedRoom);
+        room =
+            JSON.parse(savedRoom);
 
-        guest = JSON.parse(savedGuest);
+        guest =
+            JSON.parse(savedGuest);
+
+        booking =
+            JSON.parse(savedBooking);
 
     } catch (error) {
 
         console.error(
-            "Unable to read booking information.",
+            "Unable to load booking information.",
             error
         );
 
+        confirmationDetails.innerHTML = `
+
+            <div class="booking-empty">
+
+                <h3>
+                    Something Went Wrong
+                </h3>
+
+                <p>
+                    We could not load your booking details.
+                </p>
+
+                <a
+                    href="rooms.html"
+                    class="primary-button">
+                    Start Again
+                </a>
+
+            </div>
+
+        `;
+
         return;
+    }
+
+
+    /* =========================================
+       GENERATE BOOKING REFERENCE
+       ========================================= */
+
+    let bookingReference =
+        localStorage.getItem(
+            "grandVistaBookingReference"
+        );
+
+
+    if (!bookingReference) {
+
+        const randomNumber =
+            Math.floor(
+                100000 +
+                Math.random() * 900000
+            );
+
+        bookingReference =
+            `GV-${randomNumber}`;
+
+        localStorage.setItem(
+            "grandVistaBookingReference",
+            bookingReference
+        );
 
     }
 
 
-    /*
-       Display confirmation details
-    */
+    /* =========================================
+       SERVICES
+       ========================================= */
+
+    let servicesHTML = "None";
+
+
+    if (
+        booking.services &&
+        booking.services.length > 0
+    ) {
+
+        servicesHTML = booking.services
+            .map(
+                (service) =>
+                    `<span>${service.name} — ₹${service.price.toLocaleString("en-IN")}</span>`
+            )
+            .join("");
+
+    }
+
+
+    /* =========================================
+       DISPLAY CONFIRMATION
+       ========================================= */
 
     confirmationDetails.innerHTML = `
 
-        <div class="confirmation-room">
+        <div class="confirmation-reference">
 
-            <img
-                src="${room.image}"
-                alt="${room.name}">
+            <span>
+                Booking Reference
+            </span>
 
-            <div>
-
-                <p class="room-type">
-                    ${formatRoomType(room.type)}
-                </p>
-
-                <h3>
-                    ${room.name}
-                </h3>
-
-                <p>
-                    ${room.description}
-                </p>
-
-            </div>
+            <strong>
+                ${bookingReference}
+            </strong>
 
         </div>
 
 
-        <div class="confirmation-info">
+        <div class="confirmation-grid">
 
-            <div>
+            <div class="confirmation-item">
 
                 <span>
                     Guest Name
@@ -119,7 +190,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
 
-            <div>
+            <div class="confirmation-item">
 
                 <span>
                     Email
@@ -132,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
 
-            <div>
+            <div class="confirmation-item">
 
                 <span>
                     Phone
@@ -145,7 +216,20 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
 
-            <div>
+            <div class="confirmation-item">
+
+                <span>
+                    Country
+                </span>
+
+                <strong>
+                    ${guest.country}
+                </strong>
+
+            </div>
+
+
+            <div class="confirmation-item">
 
                 <span>
                     Room
@@ -158,26 +242,213 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
 
 
-            <div>
+            <div class="confirmation-item">
 
                 <span>
-                    Room Price
+                    Room Type
                 </span>
 
                 <strong>
-                    ₹${room.price.toLocaleString("en-IN")} / night
+                    ${formatRoomType(room.type)}
+                </strong>
+
+            </div>
+
+
+            <div class="confirmation-item">
+
+                <span>
+                    Check-in
+                </span>
+
+                <strong>
+                    ${formatDate(booking.checkIn)}
+                </strong>
+
+            </div>
+
+
+            <div class="confirmation-item">
+
+                <span>
+                    Check-out
+                </span>
+
+                <strong>
+                    ${formatDate(booking.checkOut)}
+                </strong>
+
+            </div>
+
+
+            <div class="confirmation-item">
+
+                <span>
+                    Guests
+                </span>
+
+                <strong>
+                    ${guest.adults} Adult(s), ${guest.children} Child(ren)
+                </strong>
+
+            </div>
+
+
+            <div class="confirmation-item">
+
+                <span>
+                    Nights
+                </span>
+
+                <strong>
+                    ${booking.nights}
                 </strong>
 
             </div>
 
         </div>
 
+
+        <div class="confirmation-pricing">
+
+            <h2>
+                Price Summary
+            </h2>
+
+
+            <div class="price-row">
+
+                <span>
+                    Room Price
+                </span>
+
+                <strong>
+                    ₹${booking.roomTotal.toLocaleString("en-IN")}
+                </strong>
+
+            </div>
+
+
+            <div class="price-row">
+
+                <span>
+                    Additional Services
+                </span>
+
+                <strong>
+                    ₹${booking.servicesTotal.toLocaleString("en-IN")}
+                </strong>
+
+            </div>
+
+
+            <div class="price-row">
+
+                <span>
+                    Taxes
+                </span>
+
+                <strong>
+                    ₹${booking.tax.toLocaleString("en-IN")}
+                </strong>
+
+            </div>
+
+
+            <div class="price-row price-total">
+
+                <span>
+                    Total
+                </span>
+
+                <strong>
+                    ₹${booking.total.toLocaleString("en-IN")}
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="confirmation-services">
+
+            <h3>
+                Additional Services
+            </h3>
+
+            <div class="service-list">
+
+                ${servicesHTML}
+
+            </div>
+
+        </div>
+
+
+        <div class="confirmation-status">
+
+            <strong>
+                Booking Status
+            </strong>
+
+            <span>
+                Pending Confirmation
+            </span>
+
+        </div>
+
+
+        ${
+            guest.specialRequest
+                ? `
+                    <div class="confirmation-request">
+
+                        <strong>
+                            Special Request
+                        </strong>
+
+                        <p>
+                            ${guest.specialRequest}
+                        </p>
+
+                    </div>
+                  `
+                : ""
+        }
+
+
+        <p class="demo-note">
+            This is a fictional/demo booking confirmation
+            for the GrandVista Hotel project.
+        </p>
+
     `;
 
 
-    /*
-       Format room type
-    */
+    /* =========================================
+       HELPERS
+       ========================================= */
+
+    function formatDate(dateString) {
+
+        if (!dateString) {
+            return "—";
+        }
+
+        const date =
+            new Date(`${dateString}T00:00:00`);
+
+        return date.toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+    }
+
 
     function formatRoomType(type) {
 
@@ -193,7 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return "Executive Suite";
         }
 
-        return type;
+        return type || "Room";
 
     }
 
