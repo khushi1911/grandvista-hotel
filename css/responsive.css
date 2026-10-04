@@ -235,3 +235,40 @@
     }
 
 }
+
+/* =========================================
+   OFFERS RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .offers-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .offers-section {
+        padding: 55px 0;
+    }
+
+    .offers-filters {
+        justify-content: flex-start;
+    }
+
+    .offer-filter-button {
+        padding: 9px 15px;
+        font-size: 14px;
+    }
+
+    .offers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .offer-card-content {
+        padding: 24px;
+    }
+
+}
