@@ -272,3 +272,43 @@
     }
 
 }
+
+/* =========================================
+   BLOG DETAILS RESPONSIVE
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    .blog-details-section {
+        padding: 55px 0;
+    }
+
+    .blog-details-image img {
+        height: 350px;
+    }
+
+    .blog-details-content {
+        padding: 30px;
+    }
+
+    .blog-details-content h2 {
+        font-size: 30px;
+    }
+
+}
+
+@media (max-width: 430px) {
+
+    .blog-details-image img {
+        height: 260px;
+    }
+
+    .blog-details-content {
+        padding: 24px;
+    }
+
+    .blog-details-content h2 {
+        font-size: 26px;
+    }
+
+}
