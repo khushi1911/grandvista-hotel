@@ -7,12 +7,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description"
+        content="Explore special stay, family, business, long-stay and seasonal offers at GrandVista Hotel in Visakhapatnam.">
+
     <title>Offers | GrandVista Hotel</title>
 
     <link rel="stylesheet" href="../css/style.css">
-
     <link rel="stylesheet" href="../css/components.css">
-
     <link rel="stylesheet" href="../css/responsive.css">
 
 </head>
@@ -28,33 +29,35 @@
         <div class="container header-container">
 
             <a href="../index.html" class="logo">
-                GrandVista
+                GrandVista <span>HOTEL</span>
             </a>
-
 
             <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation"
                 aria-expanded="false">
                 ☰
             </button>
 
-
-            <nav class="nav-menu" id="navMenu">
+            <nav class="main-nav" id="navMenu" aria-label="Main navigation">
 
                 <a href="../index.html">Home</a>
+
+                <a href="about.html">About</a>
 
                 <a href="rooms.html">Rooms</a>
 
                 <a href="dining.html">Dining</a>
 
-                <a href="offers.html">Offers</a>
-
-                <a href="gallery.html">Gallery</a>
-
                 <a href="amenities.html">Amenities</a>
 
                 <a href="events.html">Events</a>
 
+                <a href="gallery.html">Gallery</a>
+
                 <a href="contact.html">Contact</a>
+
+                <a href="booking.html" class="nav-book">
+                    Book Now
+                </a>
 
             </nav>
 
@@ -79,8 +82,9 @@
             </h1>
 
             <p>
-                Explore thoughtfully designed offers
-                for a comfortable and memorable stay.
+                Discover thoughtfully designed offers for
+                comfortable stays, family holidays,
+                business trips and special occasions.
             </p>
 
         </div>
@@ -97,7 +101,6 @@
 
             <div class="container">
 
-
                 <div class="section-heading">
 
                     <p class="section-label">
@@ -109,25 +112,67 @@
                     </h2>
 
                     <p>
-                        Choose from our selection of stay,
-                        dining and experience offers.
+                        Choose an offer that matches your
+                        travel plans and enjoy a memorable
+                        GrandVista experience.
                     </p>
 
                 </div>
 
 
+                <!-- OFFER FILTERS -->
 
-                <div class="offers-grid">
+                <div class="offers-filters" aria-label="Offer categories">
+
+                    <button type="button" class="offer-filter-button active" data-category="all">
+                        All
+                    </button>
+
+                    <button type="button" class="offer-filter-button" data-category="weekend">
+                        Weekend
+                    </button>
+
+                    <button type="button" class="offer-filter-button" data-category="early">
+                        Early Booking
+                    </button>
+
+                    <button type="button" class="offer-filter-button" data-category="couple">
+                        Couple
+                    </button>
+
+                    <button type="button" class="offer-filter-button" data-category="family">
+                        Family
+                    </button>
+
+                    <button type="button" class="offer-filter-button" data-category="business">
+                        Business
+                    </button>
+
+                    <button type="button" class="offer-filter-button" data-category="long-stay">
+                        Long Stay
+                    </button>
+
+                    <button type="button" class="offer-filter-button" data-category="festival">
+                        Festival
+                    </button>
+
+                </div>
 
 
-                    <!-- OFFER 1 -->
 
-                    <article class="offer-card">
+                <!-- OFFER CARDS -->
+
+                <div class="offers-grid" id="offersGrid">
+
+
+                    <!-- WEEKEND -->
+
+                    <article class="offer-card" data-category="weekend">
 
                         <div class="offer-card-content">
 
                             <p class="section-label">
-                                Stay Offer
+                                Weekend Offer
                             </p>
 
                             <h3>
@@ -136,28 +181,36 @@
 
                             <p>
                                 Enjoy a relaxing weekend stay
-                                with a comfortable room and
-                                thoughtful hotel services.
+                                with comfortable accommodation
+                                and a complimentary breakfast.
                             </p>
 
+                            <p>
+                                <strong>Validity:</strong>
+                                Friday to Sunday stays
+                            </p>
+
+                            <h4>
+                                Included Benefits
+                            </h4>
+
                             <ul>
-
-                                <li>
-                                    Comfortable accommodation
-                                </li>
-
-                                <li>
-                                    Weekend stay experience
-                                </li>
-
-                                <li>
-                                    Complimentary breakfast
-                                </li>
-
+                                <li>Comfortable accommodation</li>
+                                <li>Complimentary breakfast</li>
+                                <li>Access to hotel amenities</li>
                             </ul>
 
-                            <a href="rooms.html" class="primary-button">
-                                Explore Rooms
+                            <h4>
+                                Terms
+                            </h4>
+
+                            <p>
+                                Subject to room availability.
+                                Fictional demo offer.
+                            </p>
+
+                            <a href="booking.html" class="primary-button">
+                                Book Now
                             </a>
 
                         </div>
@@ -166,44 +219,52 @@
 
 
 
-                    <!-- OFFER 2 -->
+                    <!-- EARLY BOOKING -->
 
-                    <article class="offer-card">
+                    <article class="offer-card" data-category="early">
 
                         <div class="offer-card-content">
 
                             <p class="section-label">
-                                Dining Offer
+                                Early Booking
                             </p>
 
                             <h3>
-                                Dining Experience
+                                Plan Ahead & Stay
                             </h3>
 
                             <p>
-                                Discover a relaxed dining
-                                experience with thoughtfully
-                                prepared meals.
+                                Plan your stay in advance and
+                                enjoy a thoughtfully prepared
+                                hotel experience.
                             </p>
 
+                            <p>
+                                <strong>Validity:</strong>
+                                Advance booking
+                            </p>
+
+                            <h4>
+                                Included Benefits
+                            </h4>
+
                             <ul>
-
-                                <li>
-                                    Restaurant experience
-                                </li>
-
-                                <li>
-                                    Carefully prepared dishes
-                                </li>
-
-                                <li>
-                                    Comfortable setting
-                                </li>
-
+                                <li>Priority room selection</li>
+                                <li>Flexible stay planning</li>
+                                <li>Complimentary Wi-Fi</li>
                             </ul>
 
-                            <a href="dining.html" class="primary-button">
-                                Explore Dining
+                            <h4>
+                                Terms
+                            </h4>
+
+                            <p>
+                                Advance reservation required.
+                                Fictional demo offer.
+                            </p>
+
+                            <a href="booking.html" class="primary-button">
+                                Book Now
                             </a>
 
                         </div>
@@ -212,9 +273,62 @@
 
 
 
-                    <!-- OFFER 3 -->
+                    <!-- COUPLE -->
 
-                    <article class="offer-card">
+                    <article class="offer-card" data-category="couple">
+
+                        <div class="offer-card-content">
+
+                            <p class="section-label">
+                                Couple Offer
+                            </p>
+
+                            <h3>
+                                Couple Retreat
+                            </h3>
+
+                            <p>
+                                Enjoy a comfortable stay designed
+                                for a relaxing couple getaway.
+                            </p>
+
+                            <p>
+                                <strong>Validity:</strong>
+                                Selected stay dates
+                            </p>
+
+                            <h4>
+                                Included Benefits
+                            </h4>
+
+                            <ul>
+                                <li>Premium room experience</li>
+                                <li>Breakfast for two</li>
+                                <li>Celebration setup option</li>
+                            </ul>
+
+                            <h4>
+                                Terms
+                            </h4>
+
+                            <p>
+                                Subject to availability.
+                                Fictional demo offer.
+                            </p>
+
+                            <a href="booking.html" class="primary-button">
+                                Book Now
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- FAMILY -->
+
+                    <article class="offer-card" data-category="family">
 
                         <div class="offer-card-content">
 
@@ -228,28 +342,36 @@
 
                             <p>
                                 Spend quality time together
-                                with a comfortable stay and
-                                convenient hotel facilities.
+                                with comfortable accommodation
+                                and convenient facilities.
                             </p>
 
+                            <p>
+                                <strong>Validity:</strong>
+                                Selected family stay dates
+                            </p>
+
+                            <h4>
+                                Included Benefits
+                            </h4>
+
                             <ul>
-
-                                <li>
-                                    Spacious accommodation
-                                </li>
-
-                                <li>
-                                    Family-friendly experience
-                                </li>
-
-                                <li>
-                                    Access to hotel amenities
-                                </li>
-
+                                <li>Spacious accommodation</li>
+                                <li>Family-friendly facilities</li>
+                                <li>Breakfast option</li>
                             </ul>
 
-                            <a href="amenities.html" class="primary-button">
-                                View Amenities
+                            <h4>
+                                Terms
+                            </h4>
+
+                            <p>
+                                Room occupancy limits apply.
+                                Fictional demo offer.
+                            </p>
+
+                            <a href="booking.html" class="primary-button">
+                                Book Now
                             </a>
 
                         </div>
@@ -258,49 +380,185 @@
 
 
 
-                    <!-- OFFER 4 -->
+                    <!-- BUSINESS -->
 
-                    <article class="offer-card">
+                    <article class="offer-card" data-category="business">
 
                         <div class="offer-card-content">
 
                             <p class="section-label">
-                                Celebration
+                                Business Offer
                             </p>
 
                             <h3>
-                                Special Occasion
+                                Business Stay
                             </h3>
 
                             <p>
-                                Make your special moments memorable
-                                with comfortable spaces and event support.
+                                A convenient stay for business
+                                travellers visiting Visakhapatnam.
                             </p>
 
+                            <p>
+                                <strong>Validity:</strong>
+                                Weekday stays
+                            </p>
+
+                            <h4>
+                                Included Benefits
+                            </h4>
+
                             <ul>
-
-                                <li>
-                                    Event space
-                                </li>
-
-                                <li>
-                                    Comfortable setting
-                                </li>
-
-                                <li>
-                                    Event support
-                                </li>
-
+                                <li>Comfortable workspace</li>
+                                <li>Complimentary Wi-Fi</li>
+                                <li>Business-friendly facilities</li>
                             </ul>
 
-                            <a href="events.html" class="primary-button">
-                                Explore Events
+                            <h4>
+                                Terms
+                            </h4>
+
+                            <p>
+                                Subject to availability.
+                                Fictional demo offer.
+                            </p>
+
+                            <a href="booking.html" class="primary-button">
+                                Book Now
                             </a>
 
                         </div>
 
                     </article>
 
+
+
+                    <!-- LONG STAY -->
+
+                    <article class="offer-card" data-category="long-stay">
+
+                        <div class="offer-card-content">
+
+                            <p class="section-label">
+                                Long Stay
+                            </p>
+
+                            <h3>
+                                Stay Longer
+                            </h3>
+
+                            <p>
+                                Make GrandVista your comfortable
+                                base for an extended stay.
+                            </p>
+
+                            <p>
+                                <strong>Validity:</strong>
+                                Extended stays
+                            </p>
+
+                            <h4>
+                                Included Benefits
+                            </h4>
+
+                            <ul>
+                                <li>Comfortable long-stay accommodation</li>
+                                <li>Room service access</li>
+                                <li>Hotel amenities</li>
+                            </ul>
+
+                            <h4>
+                                Terms
+                            </h4>
+
+                            <p>
+                                Minimum stay requirements may apply.
+                                Fictional demo offer.
+                            </p>
+
+                            <a href="booking.html" class="primary-button">
+                                Book Now
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- FESTIVAL -->
+
+                    <article class="offer-card" data-category="festival">
+
+                        <div class="offer-card-content">
+
+                            <p class="section-label">
+                                Festival Offer
+                            </p>
+
+                            <h3>
+                                Festival Escape
+                            </h3>
+
+                            <p>
+                                Celebrate the season with a
+                                comfortable GrandVista stay.
+                            </p>
+
+                            <p>
+                                <strong>Validity:</strong>
+                                Selected festival dates
+                            </p>
+
+                            <h4>
+                                Included Benefits
+                            </h4>
+
+                            <ul>
+                                <li>Comfortable accommodation</li>
+                                <li>Dining experience</li>
+                                <li>Festive stay experience</li>
+                            </ul>
+
+                            <h4>
+                                Terms
+                            </h4>
+
+                            <p>
+                                Offer dates and availability
+                                may vary. Fictional demo offer.
+                            </p>
+
+                            <a href="booking.html" class="primary-button">
+                                Book Now
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
+                <!-- EMPTY MESSAGE -->
+
+                <p id="offersEmptyMessage" class="offers-empty-message" hidden>
+                    No offers are available in this category.
+                </p>
+
+
+                <!-- DEMO NOTE -->
+
+                <div class="demo-note">
+
+                    <p>
+                        <strong>Demo Notice:</strong>
+                        GrandVista Hotel and its offers are
+                        fictional for this project. Offer
+                        availability, validity and benefits
+                        are demonstration data.
+                    </p>
 
                 </div>
 
@@ -320,7 +578,6 @@
 
             <div class="footer-content">
 
-
                 <div>
 
                     <h3>
@@ -333,7 +590,6 @@
                     </p>
 
                 </div>
-
 
 
                 <div>
@@ -364,7 +620,6 @@
 
                 </div>
 
-
             </div>
 
 
@@ -384,7 +639,7 @@
 
 
     <script src="../js/main.js"></script>
-
+    <script src="../js/offers.js"></script>
 
 </body>
 
