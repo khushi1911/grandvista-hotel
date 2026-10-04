@@ -14,10 +14,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const showAllRoomsButton =
         document.getElementById("showAllRooms");
 
+    const roomTypeFilter =
+        document.getElementById("roomTypeFilter");
 
-    /*
-       Hotel room data
-    */
+    const guestFilter =
+        document.getElementById("guestFilter");
+
+    const sortRooms =
+        document.getElementById("sortRooms");
+
+
+    /* =========================================
+       ROOM DATA
+       ========================================= */
 
     const rooms = [
 
@@ -26,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
             name: "Deluxe Room",
             type: "deluxe",
             price: 5000,
-            size: "350 sq.ft.",
+            size: 350,
+            sizeText: "350 sq.ft.",
             guests: 2,
             bed: "King Bed",
             view: "City View",
@@ -40,7 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
             name: "Premium Room",
             type: "premium",
             price: 7000,
-            size: "450 sq.ft.",
+            size: 450,
+            sizeText: "450 sq.ft.",
             guests: 3,
             bed: "King Bed",
             view: "Garden View",
@@ -54,7 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
             name: "Executive Suite",
             type: "suite",
             price: 10000,
-            size: "650 sq.ft.",
+            size: 650,
+            sizeText: "650 sq.ft.",
             guests: 4,
             bed: "King Bed",
             view: "Panoramic View",
@@ -66,12 +78,14 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
 
-    /*
-       Get booking search data
-    */
+    /* =========================================
+       BOOKING SEARCH
+       ========================================= */
 
     const savedSearch =
-        localStorage.getItem("grandVistaBookingSearch");
+        localStorage.getItem(
+            "grandVistaBookingSearch"
+        );
 
     let bookingSearch = null;
 
@@ -80,7 +94,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
 
-            bookingSearch = JSON.parse(savedSearch);
+            bookingSearch =
+                JSON.parse(savedSearch);
 
         } catch (error) {
 
@@ -94,40 +109,53 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /*
-       Display booking information
-    */
+    /* =========================================
+       DISPLAY SEARCH SUMMARY
+       ========================================= */
 
     if (bookingSearch) {
 
-        document.getElementById("displayCheckIn").textContent =
+        document.getElementById(
+            "displayCheckIn"
+        ).textContent =
             formatDate(bookingSearch.checkIn);
 
-        document.getElementById("displayCheckOut").textContent =
+        document.getElementById(
+            "displayCheckOut"
+        ).textContent =
             formatDate(bookingSearch.checkOut);
+
 
         const totalGuests =
             Number(bookingSearch.adults || 0) +
             Number(bookingSearch.children || 0);
 
-        document.getElementById("displayGuests").textContent =
+
+        document.getElementById(
+            "displayGuests"
+        ).textContent =
             `${totalGuests} Guest${totalGuests !== 1 ? "s" : ""}`;
 
-        document.getElementById("displayRooms").textContent =
-            bookingSearch.rooms;
 
-        document.getElementById("displayRoomType").textContent =
-            formatRoomType(bookingSearch.roomType);
+        document.getElementById(
+            "displayRooms"
+        ).textContent =
+            bookingSearch.rooms || 1;
+
+
+        document.getElementById(
+            "displayRoomType"
+        ).textContent =
+            formatRoomType(
+                bookingSearch.roomType
+            );
 
     }
 
 
-    /*
-       Filter rooms
-    */
-
-    let filteredRooms = rooms;
-
+    /* =========================================
+       INITIAL FILTERS
+       ========================================= */
 
     if (
         bookingSearch &&
@@ -135,95 +163,143 @@ document.addEventListener("DOMContentLoaded", () => {
         bookingSearch.roomType !== "all"
     ) {
 
-        filteredRooms = rooms.filter(
-            room => room.type === bookingSearch.roomType
+        roomTypeFilter.value =
+            bookingSearch.roomType;
+
+    }
+
+
+    /* =========================================
+       FILTER EVENTS
+       ========================================= */
+
+    roomTypeFilter.addEventListener(
+        "change",
+        renderRooms
+    );
+
+    guestFilter.addEventListener(
+        "change",
+        renderRooms
+    );
+
+    sortRooms.addEventListener(
+        "change",
+        renderRooms
+    );
+
+
+    /* =========================================
+       SHOW ALL
+       ========================================= */
+
+    showAllRoomsButton.addEventListener(
+        "click",
+        () => {
+
+            roomTypeFilter.value = "all";
+            guestFilter.value = "0";
+            sortRooms.value = "featured";
+
+            renderRooms();
+
+        }
+    );
+
+
+    /* =========================================
+       RENDER
+       ========================================= */
+
+    function renderRooms() {
+
+        let filteredRooms =
+            [...rooms];
+
+
+        /* Room type */
+
+        const selectedType =
+            roomTypeFilter.value;
+
+
+        if (selectedType !== "all") {
+
+            filteredRooms =
+                filteredRooms.filter(
+                    room =>
+                        room.type === selectedType
+                );
+
+        }
+
+
+        /* Guest capacity */
+
+        const minimumGuests =
+            Number(
+                guestFilter.value
+            );
+
+
+        if (minimumGuests > 0) {
+
+            filteredRooms =
+                filteredRooms.filter(
+                    room =>
+                        room.guests >=
+                        minimumGuests
+                );
+
+        }
+
+
+        /* Sorting */
+
+        const sortValue =
+            sortRooms.value;
+
+
+        if (sortValue === "price-low") {
+
+            filteredRooms.sort(
+                (a, b) =>
+                    a.price - b.price
+            );
+
+        }
+
+
+        if (sortValue === "price-high") {
+
+            filteredRooms.sort(
+                (a, b) =>
+                    b.price - a.price
+            );
+
+        }
+
+
+        if (sortValue === "size") {
+
+            filteredRooms.sort(
+                (a, b) =>
+                    b.size - a.size
+            );
+
+        }
+
+
+        displayRooms(
+            filteredRooms
         );
 
     }
 
 
-    /*
-       Display rooms
-    */
-
-    displayRooms(filteredRooms);
-
-
-    /*
-       Show all rooms
-    */
-
-    if (showAllRoomsButton) {
-
-        showAllRoomsButton.addEventListener(
-            "click",
-            () => {
-
-                noRoomsMessage.hidden = true;
-
-                displayRooms(rooms);
-
-            }
-        );
-
-    }
-
-
-    /*
-       Format date
-    */
-
-    function formatDate(dateString) {
-
-        if (!dateString) {
-            return "-";
-        }
-
-        const date =
-            new Date(dateString + "T00:00:00");
-
-        return date.toLocaleDateString(
-            "en-IN",
-            {
-                day: "2-digit",
-                month: "short",
-                year: "numeric"
-            }
-        );
-
-    }
-
-
-    /*
-       Format room type
-    */
-
-    function formatRoomType(type) {
-
-        if (!type || type === "all") {
-            return "All Rooms";
-        }
-
-        if (type === "deluxe") {
-            return "Deluxe";
-        }
-
-        if (type === "premium") {
-            return "Premium";
-        }
-
-        if (type === "suite") {
-            return "Executive Suite";
-        }
-
-        return type;
-
-    }
-
-
-    /*
-       Display room cards
-    */
+    /* =========================================
+       DISPLAY ROOM CARDS
+       ========================================= */
 
     function displayRooms(roomList) {
 
@@ -245,9 +321,13 @@ document.addEventListener("DOMContentLoaded", () => {
         roomList.forEach(room => {
 
             const roomCard =
-                document.createElement("article");
+                document.createElement(
+                    "article"
+                );
 
-            roomCard.className = "room-card";
+
+            roomCard.className =
+                "room-card";
 
 
             roomCard.innerHTML = `
@@ -257,7 +337,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img
                         src="${room.image}"
                         alt="${room.name}"
-                        onerror="this.style.display='none'"
                     >
 
                 </div>
@@ -281,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="room-details">
 
                         <span>
-                            ${room.size}
+                            ${room.sizeText}
                         </span>
 
                         <span>
@@ -341,14 +420,23 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
 
-            roomsContainer.appendChild(roomCard);
+            roomsContainer.appendChild(
+                roomCard
+            );
 
         });
 
 
-        /*
-           View Details buttons
-        */
+        attachRoomButtons();
+
+    }
+
+
+    /* =========================================
+       ROOM BUTTONS
+       ========================================= */
+
+    function attachRoomButtons() {
 
         const viewButtons =
             document.querySelectorAll(
@@ -356,43 +444,48 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        viewButtons.forEach(button => {
+        viewButtons.forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    const roomId =
-                        Number(button.dataset.roomId);
+                        const roomId =
+                            Number(
+                                button.dataset.roomId
+                            );
 
-                    const selectedRoom =
-                        rooms.find(
-                            room => room.id === roomId
+
+                        const selectedRoom =
+                            rooms.find(
+                                room =>
+                                    room.id === roomId
+                            );
+
+
+                        if (!selectedRoom) {
+                            return;
+                        }
+
+
+                        localStorage.setItem(
+                            "grandVistaSelectedRoom",
+                            JSON.stringify(
+                                selectedRoom
+                            )
                         );
 
 
-                    if (!selectedRoom) {
-                        return;
+                        window.location.href =
+                            `room-details.html?room=${roomId}`;
+
                     }
+                );
 
+            }
+        );
 
-                    localStorage.setItem(
-                        "grandVistaSelectedRoom",
-                        JSON.stringify(selectedRoom)
-                    );
-
-
-                    window.location.href =
-                    `room-details.html?room=${roomId}`;
-                }
-            );
-
-        });
-
-
-        /*
-           Book Now buttons
-        */
 
         const selectButtons =
             document.querySelectorAll(
@@ -400,40 +493,115 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        selectButtons.forEach(button => {
+        selectButtons.forEach(
+            button => {
 
-            button.addEventListener(
-                "click",
-                () => {
+                button.addEventListener(
+                    "click",
+                    () => {
 
-                    const roomId =
-                        Number(button.dataset.roomId);
+                        const roomId =
+                            Number(
+                                button.dataset.roomId
+                            );
 
-                    const selectedRoom =
-                        rooms.find(
-                            room => room.id === roomId
+
+                        const selectedRoom =
+                            rooms.find(
+                                room =>
+                                    room.id === roomId
+                            );
+
+
+                        if (!selectedRoom) {
+                            return;
+                        }
+
+
+                        localStorage.setItem(
+                            "grandVistaSelectedRoom",
+                            JSON.stringify(
+                                selectedRoom
+                            )
                         );
 
 
-                    if (!selectedRoom) {
-                        return;
+                        window.location.href =
+                            "booking.html";
+
                     }
+                );
 
-
-                    localStorage.setItem(
-                        "grandVistaSelectedRoom",
-                        JSON.stringify(selectedRoom)
-                    );
-
-
-                    window.location.href =
-                        "booking.html";
-
-                }
-            );
-
-        });
+            }
+        );
 
     }
+
+
+    /* =========================================
+       FORMAT DATE
+       ========================================= */
+
+    function formatDate(dateString) {
+
+        if (!dateString) {
+            return "-";
+        }
+
+
+        const date =
+            new Date(
+                dateString + "T00:00:00"
+            );
+
+
+        return date.toLocaleDateString(
+            "en-IN",
+            {
+                day: "2-digit",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       FORMAT ROOM TYPE
+       ========================================= */
+
+    function formatRoomType(type) {
+
+        if (!type || type === "all") {
+            return "All Rooms";
+        }
+
+
+        if (type === "deluxe") {
+            return "Deluxe";
+        }
+
+
+        if (type === "premium") {
+            return "Premium";
+        }
+
+
+        if (type === "suite") {
+            return "Executive Suite";
+        }
+
+
+        return type;
+
+    }
+
+
+    /* =========================================
+       INITIAL DISPLAY
+       ========================================= */
+
+    renderRooms();
 
 });
