@@ -7,12 +7,13 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Events | GrandVista Hotel</title>
+    <meta name="description"
+        content="Explore weddings, conferences, corporate meetings, celebrations and private events at GrandVista Hotel in Visakhapatnam.">
+
+    <title>Events & Banquets | GrandVista Hotel</title>
 
     <link rel="stylesheet" href="../css/style.css">
-
     <link rel="stylesheet" href="../css/components.css">
-
     <link rel="stylesheet" href="../css/responsive.css">
 
 </head>
@@ -28,33 +29,35 @@
         <div class="container header-container">
 
             <a href="../index.html" class="logo">
-                GrandVista
+                GrandVista <span>HOTEL</span>
             </a>
-
 
             <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation"
                 aria-expanded="false">
                 ☰
             </button>
 
-
-            <nav class="nav-menu" id="navMenu">
+            <nav class="main-nav" id="navMenu" aria-label="Main navigation">
 
                 <a href="../index.html">Home</a>
+
+                <a href="about.html">About</a>
 
                 <a href="rooms.html">Rooms</a>
 
                 <a href="dining.html">Dining</a>
 
-                <a href="offers.html">Offers</a>
-
-                <a href="gallery.html">Gallery</a>
-
                 <a href="amenities.html">Amenities</a>
 
                 <a href="events.html">Events</a>
 
+                <a href="gallery.html">Gallery</a>
+
                 <a href="contact.html">Contact</a>
+
+                <a href="booking.html" class="nav-book">
+                    Book Now
+                </a>
 
             </nav>
 
@@ -75,7 +78,7 @@
             </p>
 
             <h1>
-                Events & Celebrations
+                Events & Banquets
             </h1>
 
             <p>
@@ -89,19 +92,19 @@
 
 
 
-    <!-- EVENTS -->
-
     <main>
+
+
+        <!-- FEATURED VENUE -->
 
         <section class="events-section">
 
             <div class="container">
 
-
                 <div class="section-heading">
 
                     <p class="section-label">
-                        Events at GrandVista
+                        GrandVista Events
                     </p>
 
                     <h2>
@@ -109,17 +112,15 @@
                     </h2>
 
                     <p>
-                        Whether it is a professional gathering
-                        or a special celebration, our event spaces
-                        provide a comfortable setting for your occasion.
+                        From professional meetings to weddings
+                        and private celebrations, explore our
+                        flexible event spaces.
                     </p>
 
                 </div>
 
 
-
                 <div class="events-feature">
-
 
                     <div class="events-image">
 
@@ -128,83 +129,85 @@
                     </div>
 
 
-
                     <div class="events-content">
 
                         <p class="section-label">
-                            GrandVista Events
+                            Featured Venue
                         </p>
 
                         <h2>
-                            Banquets & Celebrations
+                            GrandVista Banquet Hall
                         </h2>
 
                         <p>
-                            Create memorable moments in a welcoming
-                            event space suitable for celebrations,
-                            gatherings and special occasions.
+                            A welcoming indoor venue designed for
+                            celebrations, meetings and social gatherings.
                         </p>
 
 
                         <div class="event-details">
 
                             <div>
-
                                 <span>
-                                    Suitable For
+                                    Capacity
                                 </span>
 
                                 <strong>
-                                    Celebrations
+                                    Up to 250 guests
                                 </strong>
-
                             </div>
 
 
                             <div>
-
                                 <span>
-                                    Setting
+                                    Area
                                 </span>
 
                                 <strong>
-                                    Indoor
+                                    3,500 sq. ft.
                                 </strong>
-
                             </div>
 
 
                             <div>
-
                                 <span>
-                                    Experience
+                                    Seating
                                 </span>
 
                                 <strong>
-                                    Comfortable
+                                    Theatre / Banquet
                                 </strong>
-
                             </div>
 
 
                             <div>
-
                                 <span>
-                                    Service
+                                    Facilities
                                 </span>
 
                                 <strong>
-                                    Event Support
+                                    AV & Catering
                                 </strong>
-
                             </div>
+
+                        </div>
+
+
+                        <div class="event-actions">
+
+                            <a href="contact.html" class="primary-button">
+                                Request Event Proposal
+                            </a>
+
+                            <a href="contact.html" class="secondary-button">
+                                Contact Events Team
+                            </a>
 
                         </div>
 
                     </div>
 
                 </div>
-
 
 
                 <!-- EVENT TYPES -->
@@ -221,13 +224,24 @@
                             Plan Your Occasion
                         </h2>
 
+                        <p>
+                            Choose the type of event you are planning
+                            and explore how GrandVista can support it.
+                        </p>
+
                     </div>
 
 
                     <div class="event-type-grid">
 
 
-                        <article class="event-type-card">
+                        <!-- WEDDING -->
+
+                        <article class="event-type-card" data-event-type="wedding">
+
+                            <p class="section-label">
+                                Celebration
+                            </p>
 
                             <h3>
                                 Weddings
@@ -235,55 +249,373 @@
 
                             <p>
                                 A welcoming setting for wedding
-                                celebrations and memorable gatherings.
+                                ceremonies, receptions and memorable
+                                celebrations.
                             </p>
+
+                            <div class="event-card-details">
+
+                                <span>
+                                    Capacity: Up to 250
+                                </span>
+
+                                <span>
+                                    Seating: Banquet
+                                </span>
+
+                                <span>
+                                    Catering available
+                                </span>
+
+                            </div>
+
+                            <a href="contact.html" class="text-link">
+                                Request Proposal →
+                            </a>
 
                         </article>
 
 
-                        <article class="event-type-card">
+
+                        <!-- CONFERENCE -->
+
+                        <article class="event-type-card" data-event-type="conference">
+
+                            <p class="section-label">
+                                Business
+                            </p>
 
                             <h3>
-                                Corporate Events
+                                Conferences
                             </h3>
 
                             <p>
-                                Professional spaces for meetings,
-                                conferences and corporate gatherings.
+                                Professional event space for conferences,
+                                presentations and larger business gatherings.
                             </p>
+
+                            <div class="event-card-details">
+
+                                <span>
+                                    Capacity: Up to 200
+                                </span>
+
+                                <span>
+                                    Seating: Theatre
+                                </span>
+
+                                <span>
+                                    Audio-visual support
+                                </span>
+
+                            </div>
+
+                            <a href="contact.html" class="text-link">
+                                Request Proposal →
+                            </a>
 
                         </article>
 
 
-                        <article class="event-type-card">
+
+                        <!-- CORPORATE -->
+
+                        <article class="event-type-card" data-event-type="corporate">
+
+                            <p class="section-label">
+                                Business
+                            </p>
 
                             <h3>
-                                Private Celebrations
+                                Corporate Meetings
                             </h3>
 
                             <p>
-                                Comfortable spaces for birthdays,
-                                anniversaries and special occasions.
+                                Comfortable spaces for team meetings,
+                                workshops, presentations and discussions.
                             </p>
+
+                            <div class="event-card-details">
+
+                                <span>
+                                    Capacity: Up to 80
+                                </span>
+
+                                <span>
+                                    Seating: Classroom
+                                </span>
+
+                                <span>
+                                    Wi-Fi & AV support
+                                </span>
+
+                            </div>
+
+                            <a href="contact.html" class="text-link">
+                                Request Proposal →
+                            </a>
 
                         </article>
 
 
-                        <article class="event-type-card">
+
+                        <!-- BIRTHDAY -->
+
+                        <article class="event-type-card" data-event-type="birthday">
+
+                            <p class="section-label">
+                                Celebration
+                            </p>
 
                             <h3>
-                                Social Gatherings
+                                Birthday Events
                             </h3>
 
                             <p>
-                                Bring guests together for relaxed
-                                social events and memorable moments.
+                                Create a comfortable setting for
+                                birthday celebrations with family and friends.
                             </p>
+
+                            <div class="event-card-details">
+
+                                <span>
+                                    Capacity: Up to 100
+                                </span>
+
+                                <span>
+                                    Seating: Banquet
+                                </span>
+
+                                <span>
+                                    Decoration support
+                                </span>
+
+                            </div>
+
+                            <a href="contact.html" class="text-link">
+                                Request Proposal →
+                            </a>
+
+                        </article>
+
+
+
+                        <!-- ENGAGEMENT -->
+
+                        <article class="event-type-card" data-event-type="engagement">
+
+                            <p class="section-label">
+                                Celebration
+                            </p>
+
+                            <h3>
+                                Engagements
+                            </h3>
+
+                            <p>
+                                An elegant indoor setting for engagement
+                                ceremonies and intimate celebrations.
+                            </p>
+
+                            <div class="event-card-details">
+
+                                <span>
+                                    Capacity: Up to 150
+                                </span>
+
+                                <span>
+                                    Seating: Banquet
+                                </span>
+
+                                <span>
+                                    Catering support
+                                </span>
+
+                            </div>
+
+                            <a href="contact.html" class="text-link">
+                                Request Proposal →
+                            </a>
+
+                        </article>
+
+
+
+                        <!-- PRIVATE PARTY -->
+
+                        <article class="event-type-card" data-event-type="private">
+
+                            <p class="section-label">
+                                Social
+                            </p>
+
+                            <h3>
+                                Private Parties
+                            </h3>
+
+                            <p>
+                                Flexible spaces for private parties,
+                                reunions and special social gatherings.
+                            </p>
+
+                            <div class="event-card-details">
+
+                                <span>
+                                    Capacity: Up to 120
+                                </span>
+
+                                <span>
+                                    Seating: Flexible
+                                </span>
+
+                                <span>
+                                    Catering available
+                                </span>
+
+                            </div>
+
+                            <a href="contact.html" class="text-link">
+                                Request Proposal →
+                            </a>
+
+                        </article>
+
+
+
+                        <!-- EXHIBITION -->
+
+                        <article class="event-type-card" data-event-type="exhibition">
+
+                            <p class="section-label">
+                                Business & Social
+                            </p>
+
+                            <h3>
+                                Exhibitions
+                            </h3>
+
+                            <p>
+                                Open event space suitable for exhibitions,
+                                displays and small-scale showcases.
+                            </p>
+
+                            <div class="event-card-details">
+
+                                <span>
+                                    Capacity: Up to 180
+                                </span>
+
+                                <span>
+                                    Seating: Flexible
+                                </span>
+
+                                <span>
+                                    Event support
+                                </span>
+
+                            </div>
+
+                            <a href="contact.html" class="text-link">
+                                Request Proposal →
+                            </a>
 
                         </article>
 
 
                     </div>
+
+                </div>
+
+
+                <!-- EVENT FACILITIES -->
+
+                <section class="event-facilities">
+
+                    <div class="section-heading">
+
+                        <p class="section-label">
+                            Event Support
+                        </p>
+
+                        <h2>
+                            Facilities for Your Event
+                        </h2>
+
+                    </div>
+
+
+                    <div class="event-type-grid">
+
+                        <article class="event-type-card">
+
+                            <h3>
+                                Audio-Visual Support
+                            </h3>
+
+                            <p>
+                                Presentation and audio-visual support
+                                for meetings and conferences.
+                            </p>
+
+                        </article>
+
+
+                        <article class="event-type-card">
+
+                            <h3>
+                                Catering
+                            </h3>
+
+                            <p>
+                                Dining and catering options for
+                                meetings, celebrations and gatherings.
+                            </p>
+
+                        </article>
+
+
+                        <article class="event-type-card">
+
+                            <h3>
+                                Event Decoration
+                            </h3>
+
+                            <p>
+                                Decoration support for celebrations
+                                and special occasions.
+                            </p>
+
+                        </article>
+
+
+                        <article class="event-type-card">
+
+                            <h3>
+                                Flexible Seating
+                            </h3>
+
+                            <p>
+                                Multiple seating arrangements can be
+                                planned according to event requirements.
+                            </p>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- DEMO NOTE -->
+
+                <div class="demo-note">
+
+                    <p>
+                        <strong>Demo Notice:</strong>
+                        GrandVista Hotel and its event information
+                        are fictional for this project. Capacities,
+                        facilities and event details are demonstration data.
+                    </p>
 
                 </div>
 
@@ -303,7 +635,6 @@
 
             <div class="footer-content">
 
-
                 <div>
 
                     <h3>
@@ -316,7 +647,6 @@
                     </p>
 
                 </div>
-
 
 
                 <div>
@@ -347,7 +677,6 @@
 
                 </div>
 
-
             </div>
 
 
@@ -365,9 +694,8 @@
     </footer>
 
 
-
     <script src="../js/main.js"></script>
-
+    <script src="../js/events.js"></script>
 
 </body>
 
