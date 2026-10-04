@@ -190,3 +190,48 @@
         flex-direction: column;
     }
 }
+
+/* =========================================
+   EVENT DETAILS RESPONSIVE
+   ========================================= */
+
+@media (max-width: 900px) {
+
+    .event-details-feature {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .event-information-grid,
+    .event-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .event-details-section {
+        padding: 55px 0;
+    }
+
+    .event-details-image img {
+        height: 300px;
+    }
+
+    .event-information,
+    .event-services {
+        margin-top: 60px;
+    }
+
+    .event-information-grid,
+    .event-services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .event-details-content h2 {
+        font-size: 28px;
+    }
+
+}
