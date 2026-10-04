@@ -687,7 +687,7 @@ document.addEventListener("DOMContentLoaded", () => {
             /* Email */
 
             const emailPattern =
-                /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
             if (

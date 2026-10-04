@@ -11,16 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const contactSuccess =
         document.getElementById("contactSuccess");
 
-
     if (!contactForm) {
         return;
     }
 
-
     contactForm.addEventListener("submit", (event) => {
 
         event.preventDefault();
-
 
         const name =
             document.getElementById("contactName").value.trim();
@@ -85,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         contactSuccess.textContent =
             "Thank you! Your message has been received.";
-
 
         contactForm.reset();
 

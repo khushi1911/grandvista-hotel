@@ -234,6 +234,31 @@
         font-size: 28px;
     }
 
+        .confirmation-reference {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+    
+        .confirmation-grid {
+            grid-template-columns: 1fr;
+        }
+    
+        .confirmation-pricing,
+        .confirmation-services {
+            padding: 20px;
+        }
+    
+        .confirmation-status {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+        }
+    
+        .price-row {
+            align-items: flex-start;
+        }
+
 }
 
 /* =========================================
