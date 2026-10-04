@@ -1,7 +1,7 @@
- /* =========================================
-    GRANDVISTA HOTEL
-    Dining Filter
- ========================================= */
+/* =========================================
+   GRANDVISTA HOTEL
+   Dining Filter
+   ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -11,13 +11,73 @@ document.addEventListener("DOMContentLoaded", () => {
     const diningCards =
         document.querySelectorAll(".dining-highlight-card");
 
+    const menuItems =
+        document.querySelectorAll(".dining-menu-item");
 
-    if (!filterButtons.length || !diningCards.length) {
-        return;
+
+    /*
+       Highlight filtering
+    */
+
+    function filterHighlights(category) {
+
+        diningCards.forEach(card => {
+
+            const cardCategory =
+                card.getAttribute("data-category");
+
+            if (
+                category === "all" ||
+                cardCategory === category
+            ) {
+
+                card.style.display = "block";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
     }
 
 
-    filterButtons.forEach((button) => {
+    /*
+       Menu filtering
+    */
+
+    function filterMenu(category) {
+
+        menuItems.forEach(item => {
+
+            const itemCategory =
+                item.getAttribute("data-category");
+
+            if (
+                category === "all" ||
+                itemCategory === category
+            ) {
+
+                item.style.display = "flex";
+
+            } else {
+
+                item.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    /*
+       Filter buttons
+    */
+
+    filterButtons.forEach(button => {
 
         button.addEventListener("click", () => {
 
@@ -25,29 +85,72 @@ document.addEventListener("DOMContentLoaded", () => {
                 button.getAttribute("data-category");
 
 
-            filterButtons.forEach((item) => {
-                item.classList.remove("active");
-            });
+            /*
+               Only update buttons in the
+               same filter section.
+            */
 
-            button.classList.add("active");
-
-
-            diningCards.forEach((card) => {
-
-                const cardCategory =
-                    card.getAttribute("data-category");
+            const filterSection =
+                button.closest(
+                    ".dining-filter"
+                );
 
 
-                if (
-                    category === "all" ||
-                    cardCategory === category
-                ) {
-                    card.style.display = "block";
-                } else {
-                    card.style.display = "none";
+            if (filterSection) {
+
+                filterSection
+                    .querySelectorAll(
+                        ".dining-filter-button"
+                    )
+                    .forEach(item => {
+
+                        item.classList.remove("active");
+
+                    });
+
+                button.classList.add("active");
+
+            }
+
+
+            /*
+               Menu categories
+            */
+
+            if (menuItems.length) {
+
+                const menuSection =
+                    button.closest(
+                        ".dining-menu-section"
+                    );
+
+                if (menuSection) {
+
+                    filterMenu(category);
+
                 }
 
-            });
+            }
+
+
+            /*
+               Dining highlight categories
+            */
+
+            if (diningCards.length) {
+
+                const highlightSection =
+                    button.closest(
+                        ".dining-highlights"
+                    );
+
+                if (highlightSection) {
+
+                    filterHighlights(category);
+
+                }
+
+            }
 
         });
 
