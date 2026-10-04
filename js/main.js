@@ -6,7 +6,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const menuToggle = document.getElementById("menuToggle");
-    const mainNav = document.querySelector(".nav-menu");
+    const mainNav = document.querySelector(".main-nav, .nav-menu");
 
     if (menuToggle && mainNav) {
 
