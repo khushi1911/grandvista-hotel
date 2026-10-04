@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description" content="Explore the rooms, dining spaces, amenities and events at GrandVista Hotel.">
+
     <title>Gallery | GrandVista Hotel</title>
 
     <link rel="stylesheet" href="../css/style.css">
@@ -37,6 +39,10 @@
                 <a href="gallery.html" class="active">Gallery</a>
                 <a href="contact.html">Contact</a>
 
+                <a href="booking.html" class="nav-book-button">
+                    Book Now
+                </a>
+
             </nav>
 
         </div>
@@ -50,7 +56,7 @@
         <div class="container page-hero-content">
 
             <p class="section-label">
-                GrandVista Hotel
+                GRANDVISTA HOTEL
             </p>
 
             <h1>Gallery</h1>
@@ -74,7 +80,7 @@
                 <div class="section-heading">
 
                     <p class="section-label">
-                        Explore GrandVista
+                        EXPLORE GRANDVISTA
                     </p>
 
                     <h2>
@@ -89,150 +95,199 @@
                 </div>
 
 
+                <!-- Gallery Filters -->
+
+                <div class="gallery-filters" aria-label="Gallery categories">
+
+                    <button type="button" class="gallery-filter active" data-category="all">
+                        All
+                    </button>
+
+                    <button type="button" class="gallery-filter" data-category="rooms">
+                        Rooms
+                    </button>
+
+                    <button type="button" class="gallery-filter" data-category="dining">
+                        Dining
+                    </button>
+
+                    <button type="button" class="gallery-filter" data-category="amenities">
+                        Amenities
+                    </button>
+
+                    <button type="button" class="gallery-filter" data-category="events">
+                        Events
+                    </button>
+
+                    <button type="button" class="gallery-filter" data-category="hotel">
+                        Hotel
+                    </button>
+
+                </div>
+
+
+                <!-- Gallery Grid -->
+
                 <div class="gallery-grid" id="galleryContainer">
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="hotel">
+
                         <img src="../images/hotel/hero.jpg" alt="GrandVista Hotel exterior">
-                
+
                         <div class="gallery-caption">
                             GrandVista Hotel
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="hotel">
+
                         <img src="../images/hotel/intro.jpg" alt="GrandVista Hotel interior">
-                
+
                         <div class="gallery-caption">
                             Hotel Interior
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="hotel">
+
                         <img src="../images/gallery/lobby.jpg" alt="GrandVista Hotel lobby">
-                
+
                         <div class="gallery-caption">
                             Hotel Lobby
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="hotel">
+
                         <img src="../images/gallery/exterior.jpg" alt="GrandVista Hotel exterior">
-                
+
                         <div class="gallery-caption">
                             Hotel Exterior
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="amenities">
+
                         <img src="../images/gallery/pool.jpg" alt="GrandVista Hotel swimming pool">
-                
+
                         <div class="gallery-caption">
                             Swimming Pool
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="dining">
+
                         <img src="../images/dining/restaurant.jpg" alt="GrandVista Hotel restaurant">
-                
+
                         <div class="gallery-caption">
                             Restaurant
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="dining">
+
                         <img src="../images/dining/food.jpg" alt="Fine dining at GrandVista Hotel">
-                
+
                         <div class="gallery-caption">
                             Fine Dining
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="amenities">
+
                         <img src="../images/amenities/spa.jpg" alt="GrandVista Hotel spa">
-                
+
                         <div class="gallery-caption">
-                            Spa & Wellness
+                            Spa &amp; Wellness
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="amenities">
+
                         <img src="../images/amenities/gym.jpg" alt="GrandVista Hotel fitness center">
-                
+
                         <div class="gallery-caption">
                             Fitness Center
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="events">
+
                         <img src="../images/events/banquet.jpg" alt="GrandVista Hotel banquet hall">
-                
+
                         <div class="gallery-caption">
-                            Events & Banquets
+                            Events &amp; Banquets
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="rooms">
+
                         <img src="../images/rooms/deluxe-room.jpg" alt="GrandVista Deluxe Room">
-                
+
                         <div class="gallery-caption">
                             Deluxe Room
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="rooms">
+
                         <img src="../images/rooms/premium-room.jpg" alt="GrandVista Premium Room">
-                
+
                         <div class="gallery-caption">
                             Premium Room
                         </div>
-                
+
                     </div>
-                
-                
-                    <div class="gallery-item">
-                
+
+
+                    <div class="gallery-item" data-category="rooms">
+
                         <img src="../images/rooms/executive-suite.jpg" alt="GrandVista Executive Suite">
-                
+
                         <div class="gallery-caption">
                             Executive Suite
                         </div>
-                
+
                     </div>
-                
+
+                </div>
+
+
+                <!-- Empty Category Message -->
+
+                <div id="galleryEmptyMessage" class="gallery-empty" hidden>
+
+                    <h3>
+                        No images found
+                    </h3>
+
+                    <p>
+                        There are no gallery images in this category yet.
+                    </p>
+
                 </div>
 
             </div>
@@ -243,6 +298,7 @@
 
 
     <!-- Footer -->
+
     <footer class="site-footer">
 
         <div class="container">
