@@ -3119,3 +3119,82 @@ p {
         text-align: center;
     }
 }
+
+/* =========================================
+   ROOMS PAGE NAVIGATION
+   ========================================= */
+
+.navbar {
+    width: min(92%, var(--container));
+    min-height: 78px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.navbar .logo {
+    flex-shrink: 0;
+}
+
+.nav-book-button {
+    padding: 11px 19px !important;
+    color: var(--white) !important;
+    background: var(--primary);
+    border-radius: 5px;
+}
+
+.nav-book-button::after {
+    display: none !important;
+}
+
+.nav-book-button:hover {
+    color: var(--white) !important;
+    background: var(--primary-dark);
+}
+
+
+/* =========================================
+   ROOMS PAGE FILTERS
+   ========================================= */
+
+.room-filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 0 auto 40px;
+    padding: 22px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.room-filters .form-group {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   ROOMS PAGE MOBILE
+   ========================================= */
+
+@media (max-width: 900px) {
+    .navbar {
+        width: 92%;
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar {
+        min-height: 70px;
+        width: 92%;
+    }
+
+    .room-filters {
+        grid-template-columns: 1fr;
+        padding: 18px;
+        gap: 15px;
+    }
+}
