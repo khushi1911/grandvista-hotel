@@ -49,53 +49,53 @@ grandvista-hotel/
 ├── index.html
 │
 ├── pages/
-│ ├── about.html
-│ ├── amenities.html
-│ ├── attractions.html
-│ ├── blog.html
-│ ├── blog-details.html
-│ ├── booking.html
-│ ├── contact.html
-│ ├── dining.html
-│ ├── event-details.html
-│ ├── events.html
-│ ├── facilities.html
-│ ├── faq.html
-│ ├── gallery.html
-│ ├── location.html
-│ ├── offers.html
-│ ├── policies.html
-│ ├── privacy-policy.html
-│ ├── restaurant.html
-│ ├── reviews.html
-│ ├── room-details.html
-│ ├── rooms.html
-│ └── terms.html
+│   ├── about.html
+│   ├── amenities.html
+│   ├── attractions.html
+│   ├── blog.html
+│   ├── blog-details.html
+│   ├── booking.html
+│   ├── contact.html
+│   ├── dining.html
+│   ├── event-details.html
+│   ├── events.html
+│   ├── facilities.html
+│   ├── faq.html
+│   ├── gallery.html
+│   ├── location.html
+│   ├── offers.html
+│   ├── policies.html
+│   ├── privacy-policy.html
+│   ├── restaurant.html
+│   ├── reviews.html
+│   ├── room-details.html
+│   ├── rooms.html
+│   └── terms.html
 │
 ├── css/
-│ ├── style.css
-│ ├── components.css
-│ └── responsive.css
+│   ├── style.css
+│   ├── components.css
+│   └── responsive.css
 │
 ├── js/
-│ ├── booking.js
-│ ├── dining.js
-│ ├── events.js
-│ ├── filters.js
-│ ├── gallery.js
-│ ├── main.js
-│ ├── pricing.js
-│ ├── rooms.js
-│ └── validation.js
+│   ├── booking.js
+│   ├── dining.js
+│   ├── events.js
+│   ├── filters.js
+│   ├── gallery.js
+│   ├── main.js
+│   ├── pricing.js
+│   ├── rooms.js
+│   └── validation.js
 │
 ├── images/
-│ ├── amenities/
-│ ├── blog/
-│ ├── dining/
-│ ├── events/
-│ ├── gallery/
-│ ├── hotel/
-│ └── rooms/
+│   ├── amenities/
+│   ├── blog/
+│   ├── dining/
+│   ├── events/
+│   ├── gallery/
+│   ├── hotel/
+│   └── rooms/
 │
 ├── LICENSE
 └── README.md
