@@ -4,7 +4,7 @@ A responsive hotel website designed to provide a smooth and elegant hotel browsi
 
 ## Live Website
 
-Coming soon — GitHub Pages deployment will be added after final deployment.
+[Visit GrandVista Hotel](https://khushi1911.github.io/grandvista-hotel/)
 
 ## Project Overview
 
